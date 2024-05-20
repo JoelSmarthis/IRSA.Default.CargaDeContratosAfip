@@ -1,0 +1,847 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="CargaDatosInmueble" this:CargaDatosInmueble.in_unidadLocal="N00L053" this:CargaDatosInmueble.in_direccionCalle="Avenida de Acceso Este" this:CargaDatosInmueble.in_direccionNumero="3280" this:CargaDatosInmueble.in_direccionProvincia="Mendoza" this:CargaDatosInmueble.in_direccionPartido="Guaymallen" this:CargaDatosInmueble.in_direccionLocalidad="Villa Nueva" this:CargaDatosInmueble.in_direccionCp="5521" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_unidadLocal" Type="InArgument(x:String)" />
+    <x:Property Name="in_direccionCalle" Type="InArgument(x:String)" />
+    <x:Property Name="in_direccionNumero" Type="InArgument(x:String)" />
+    <x:Property Name="in_direccionProvincia" Type="InArgument(x:String)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="in_direccionComuna" Type="InArgument(x:String)" />
+    <x:Property Name="in_direccionPartido" Type="InArgument(x:String)" />
+    <x:Property Name="in_direccionLocalidad" Type="InArgument(x:String)" />
+    <x:Property Name="in_direccionCp" Type="InArgument(x:String)" />
+    <x:Property Name="out_observaciones" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:CargaDatosInmueble.out_observaciones>
+    <InArgument x:TypeArguments="x:String" />
+  </this:CargaDatosInmueble.out_observaciones>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1576,5075</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>CargaDatosInmueble_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="29">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="CargaDatosInmueble" sap:VirtualizedContainerService.HintSize="1586,5010" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="delayBefore" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1544,101" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Cargando datos del inmueble&quot;]" />
+    <Assign DisplayName="Assign - delay before" sap:VirtualizedContainerService.HintSize="1544,70" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[delayBefore]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">900</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe '" sap:VirtualizedContainerService.HintSize="1544,4657" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="b87401f8d72f8eb7c71475e1489747e9" Selector="&lt;html app='chrome.exe' title='servicioscf.afip.gob.ar/fiscalizacion/reli/app/contrato/DatosInmueble.aspx' /&gt;">
+      <ui:BrowserScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1510,4501" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="datosContratoExists" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:Click AlterIfDisabled="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="[delayBefore*6]" DisplayName="Click - NO" sap:VirtualizedContainerService.HintSize="1468,116" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="74a65ee4-0736-4f15-a012-d289105ed39a" InformativeScreenshot="0103ab2466e32cc615d06a31842bb47b" Selector="&lt;webctrl aaname='No' parentid='dvRadioMultipleDomicilioComplejo' tag='LABEL' /&gt;" WaitForReady="INTERACTIVE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:Click.Target>
+            </ui:Click>
+            <ui:Click AlterIfDisabled="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DelayBefore="[delayBefore]" DisplayName="Click - NO" sap:VirtualizedContainerService.HintSize="1468,116" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="74a65ee4-0736-4f15-a012-d289105ed39a" InformativeScreenshot="0103ab2466e32cc615d06a31842bb47b" Selector="&lt;webctrl aaname='No' parentid='dvRadioMultipleDomicilioComplejo' tag='LABEL' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:Click.Target>
+            </ui:Click>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DelayBefore="[delayBefore]" DeselectAfter="True" DisplayName="Type Into - LOCAL" EmptyField="True" sap:VirtualizedContainerService.HintSize="1468,164" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[in_unidadLocal]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="78e266eb-4ba3-4b30-a3a2-21afb2ca30e2" InformativeScreenshot="64de5a46271fd9648800a3740dc68d72" Selector="&lt;webctrl id='txtIdentificacionLocal4' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="[delayBefore*2]" DisplayName="Select Item - Tipo des uperficie" sap:VirtualizedContainerService.HintSize="1468,164" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="Shopping">
+              <ui:SelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="16">
+                  <x:String></x:String>
+                  <x:String>Supermercado</x:String>
+                  <x:String>Hipermercado</x:String>
+                  <x:String>Shopping</x:String>
+                  <x:String>Paseo o galería de compras</x:String>
+                  <x:String>Polo gastronómico</x:String>
+                  <x:String>Centro cultural</x:String>
+                  <x:String>Centro de convenciones, multieventos o similares</x:String>
+                  <x:String>Complejo comercial no convencional</x:String>
+                  <x:String>Feria, Mercado</x:String>
+                  <x:String>Terrazas y sótanos</x:String>
+                  <x:String>Cocheras mensuales -no servicio garaje-</x:String>
+                  <x:String>Otros</x:String>
+                </scg:List>
+              </ui:SelectItem.Items>
+              <ui:SelectItem.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="41c8f9d1-0ecf-4157-9fec-1d8f60d6b710" InformativeScreenshot="7a207be2c526c2aeef1ec1d2cd548718" Selector="&lt;webctrl id='cboSuperficie' tag='SELECT' /&gt;" WaitForReady="INTERACTIVE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:SelectItem.Target>
+            </ui:SelectItem>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DeselectAfter="True" DisplayName="Type Into - CALLE" EmptyField="True" sap:VirtualizedContainerService.HintSize="1468,164" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[in_direccionCalle]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e68ea880-8ca9-45cf-8da2-12ad6ad9540d" InformativeScreenshot="a0d68dfe15ba383f34f00f653ef2e4b6" Selector="&lt;webctrl id='txtCalle' tag='INPUT' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DeselectAfter="True" DisplayName="Type Into - numero direccion" EmptyField="True" sap:VirtualizedContainerService.HintSize="1468,164" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[in_direccionNumero]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="998bd09f-6d6c-45df-b7af-6fc5307ec399" InformativeScreenshot="fbcf1881227062a9f26ef60735947885" Selector="&lt;webctrl id='txtNumero' tag='INPUT' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey - pagina abajo" sap:VirtualizedContainerService.HintSize="1468,142" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="pgdn" KeyModifiers="None" SpecialKey="True">
+              <ui:SendHotkey.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="f0ccb119-cdee-4538-b0d7-8a829c35c8a3">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:SendHotkey.Target>
+            </ui:SendHotkey>
+            <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="[delayBefore]" DisplayName="Select Item PROVINCIA" sap:VirtualizedContainerService.HintSize="1063,164" sap2010:WorkflowViewState.IdRef="SelectItem_2" Item="[in_direccionProvincia.ToUpper]">
+              <ui:SelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="32">
+                  <x:String></x:String>
+                  <x:String>BUENOS AIRES</x:String>
+                  <x:String>CATAMARCA</x:String>
+                  <x:String>CHACO</x:String>
+                  <x:String>CHUBUT</x:String>
+                  <x:String>CIUDAD AUTONOMA BUENOS AIRES</x:String>
+                  <x:String>CORDOBA</x:String>
+                  <x:String>CORRIENTES</x:String>
+                  <x:String>ENTRE RIOS</x:String>
+                  <x:String>FORMOSA</x:String>
+                  <x:String>JUJUY</x:String>
+                  <x:String>LA PAMPA</x:String>
+                  <x:String>LA RIOJA</x:String>
+                  <x:String>MENDOZA</x:String>
+                  <x:String>MISIONES</x:String>
+                  <x:String>NEUQUEN</x:String>
+                  <x:String>RIO NEGRO</x:String>
+                  <x:String>SALTA</x:String>
+                  <x:String>SAN JUAN</x:String>
+                  <x:String>SAN LUIS</x:String>
+                  <x:String>SANTA CRUZ</x:String>
+                  <x:String>SANTA FE</x:String>
+                  <x:String>SANTIAGO DEL ESTERO</x:String>
+                  <x:String>TIERRA DEL FUEGO</x:String>
+                  <x:String>TUCUMAN</x:String>
+                </scg:List>
+              </ui:SelectItem.Items>
+              <ui:SelectItem.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b05a8b9b-943f-4610-aa2a-bf20346a0ec9" InformativeScreenshot="66069a4a74a33cb10ea6a6216f81aa29" Selector="&lt;webctrl id='cboProvincia' tag='SELECT' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:SelectItem.Target>
+            </ui:SelectItem>
+            <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayMS="1000" DisplayName="Send Hotkey - enviar tecla tab" sap:VirtualizedContainerService.HintSize="1468,142" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="tab" KeyModifiers="None" SpecialKey="True">
+              <ui:SendHotkey.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="db86012c-e20f-4d76-899a-85627487b4cb">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:SendHotkey.Target>
+            </ui:SendHotkey>
+            <If Condition="[in_direccionProvincia.ToUpper = &quot;CIUDAD AUTONOMA BUENOS AIRES&quot;]" sap:VirtualizedContainerService.HintSize="1468,1022" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence DisplayName="CABA" sap:VirtualizedContainerService.HintSize="401,470" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="2000" DelayBefore="2000" DisplayName="Select Item - sleccionar partido" sap:VirtualizedContainerService.HintSize="359,164" sap2010:WorkflowViewState.IdRef="SelectItem_3" Item="[in_direccionComuna]">
+                    <ui:SelectItem.Items>
+                      <scg:List x:TypeArguments="x:String" Capacity="16">
+                        <x:String></x:String>
+                        <x:String>Comuna 1</x:String>
+                        <x:String>Comuna 2</x:String>
+                        <x:String>Comuna 3</x:String>
+                        <x:String>Comuna 4</x:String>
+                        <x:String>Comuna 5</x:String>
+                        <x:String>Comuna 6</x:String>
+                        <x:String>Comuna 7</x:String>
+                        <x:String>Comuna 8</x:String>
+                        <x:String>Comuna 9</x:String>
+                        <x:String>Comuna 10</x:String>
+                        <x:String>Comuna 11</x:String>
+                        <x:String>Comuna 12</x:String>
+                        <x:String>Comuna 13</x:String>
+                        <x:String>Comuna 14</x:String>
+                        <x:String>Comuna 15</x:String>
+                      </scg:List>
+                    </ui:SelectItem.Items>
+                    <ui:SelectItem.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="76dfd5df-d71f-480d-859e-02b6782ff24c" InformativeScreenshot="3bbe22281eb998df4df53ba1c3e12fbb" Selector="&lt;webctrl id='cboPartido' tag='SELECT' class='form-control' parentclass='form-group col-md-4' parentid='dvcboPartido' /&gt;" WaitForReady="INTERACTIVE">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                      </ui:Target>
+                    </ui:SelectItem.Target>
+                  </ui:SelectItem>
+                  <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="1500" DisplayName="Select Item - codigo postal" sap:VirtualizedContainerService.HintSize="359,164" sap2010:WorkflowViewState.IdRef="SelectItem_7" Item="[in_direccionCp.Trim]">
+                    <ui:SelectItem.Items>
+                      <scg:List x:TypeArguments="x:String" Capacity="50">
+                        <x:String>1001</x:String>
+                        <x:String>1002</x:String>
+                        <x:String>1003</x:String>
+                        <x:String>1004</x:String>
+                        <x:String>1005</x:String>
+                        <x:String>1006</x:String>
+                        <x:String>1007</x:String>
+                        <x:String>1008</x:String>
+                        <x:String>1009</x:String>
+                        <x:String>1010</x:String>
+                        <x:String>1011</x:String>
+                        <x:String>1012</x:String>
+                        <x:String>1013</x:String>
+                        <x:String>1014</x:String>
+                        <x:String>1015</x:String>
+                        <x:String>1016</x:String>
+                        <x:String>1017</x:String>
+                        <x:String>1018</x:String>
+                        <x:String>1019</x:String>
+                        <x:String>1020</x:String>
+                        <x:String>1021</x:String>
+                        <x:String>1022</x:String>
+                        <x:String>1023</x:String>
+                        <x:String>1024</x:String>
+                        <x:String>1025</x:String>
+                        <x:String>1026</x:String>
+                        <x:String>1027</x:String>
+                        <x:String>1028</x:String>
+                        <x:String>1029</x:String>
+                        <x:String>1030</x:String>
+                        <x:String>1031</x:String>
+                        <x:String>1032</x:String>
+                        <x:String>1033</x:String>
+                        <x:String>1034</x:String>
+                        <x:String>1035</x:String>
+                        <x:String>1036</x:String>
+                        <x:String>1037</x:String>
+                        <x:String>1038</x:String>
+                        <x:String>1039</x:String>
+                        <x:String>1040</x:String>
+                        <x:String>1041</x:String>
+                        <x:String>1042</x:String>
+                        <x:String>1043</x:String>
+                        <x:String>1044</x:String>
+                        <x:String>1045</x:String>
+                        <x:String>1046</x:String>
+                        <x:String>1047</x:String>
+                        <x:String>1048</x:String>
+                        <x:String>1049</x:String>
+                        <x:String>1050</x:String>
+                      </scg:List>
+                    </ui:SelectItem.Items>
+                    <ui:SelectItem.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1901f7db-a42c-4079-88c4-eb6d007ae400" InformativeScreenshot="3bd8990a2a7f1782d870e70c1cf1076e" Selector="&lt;webctrl aria-role='combobox' tag='SPAN' class='select2-selection select2-selection--single' parentclass='selection' parentid='dvDatosInmueble' /&gt;" WaitForReady="INTERACTIVE">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                      </ui:Target>
+                    </ui:SelectItem.Target>
+                  </ui:SelectItem>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="PROVINCIA" sap:VirtualizedContainerService.HintSize="617,855" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:Boolean" Name="inputTextPartidoExists" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:UiElementExists DisplayName="Element Exists - Type Into Partido" Exists="[inputTextPartidoExists]" sap:VirtualizedContainerService.HintSize="575,116" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                    <ui:UiElementExists.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d0dcfcfa-b4c9-406f-89b4-914184451dbd" InformativeScreenshot="f3961d77fd5eca01caeb9d72ddf48dab" Selector="&lt;webctrl id='txtPartido' tag='INPUT' placeholder='Ingresá el partido' type='text' /&gt;" TimeoutMS="2000">
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:UiElementExists.Target>
+                  </ui:UiElementExists>
+                  <If Condition="[inputTextPartidoExists = True]" DisplayName="If - Partido NO es un elemento de seleccion" sap:VirtualizedContainerService.HintSize="575,228" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If.Then>
+                      <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into - Partido escrito" EmptyField="True" sap:VirtualizedContainerService.HintSize="265,61" sap2010:WorkflowViewState.IdRef="TypeInto_5" Text="[in_direccionPartido.ToUpper]">
+                        <ui:TypeInto.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a10e7804-c8f8-4832-9952-e856be9ed431" InformativeScreenshot="f3961d77fd5eca01caeb9d72ddf48dab" Selector="&lt;webctrl id='txtPartido' tag='INPUT' /&gt;">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:TypeInto.Target>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:TypeInto>
+                    </If.Then>
+                    <If.Else>
+                      <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item - seleccion PARTIDO" sap:VirtualizedContainerService.HintSize="265,61" sap2010:WorkflowViewState.IdRef="SelectItem_6" Item="[in_direccionPartido.ToUpper]">
+                        <ui:SelectItem.Items>
+                          <scg:List x:TypeArguments="x:String" Capacity="50">
+                            <x:String></x:String>
+                            <x:String>Adolfo Alsina</x:String>
+                            <x:String>Alberti</x:String>
+                            <x:String>Alte. Brown</x:String>
+                            <x:String>Ameghino</x:String>
+                            <x:String>Avellaneda</x:String>
+                            <x:String>Ayacucho</x:String>
+                            <x:String>Azul</x:String>
+                            <x:String>Bahia Blanca</x:String>
+                            <x:String>Balcarce</x:String>
+                            <x:String>Baradero</x:String>
+                            <x:String>Benito Juarez</x:String>
+                            <x:String>Berazategui</x:String>
+                            <x:String>Berisso</x:String>
+                            <x:String>Bme. Mitre</x:String>
+                            <x:String>Bolivar</x:String>
+                            <x:String>Bragado</x:String>
+                            <x:String>Campana</x:String>
+                            <x:String>Canuelas</x:String>
+                            <x:String>Cap. Sarmiento</x:String>
+                            <x:String>Carlos Casares</x:String>
+                            <x:String>Carlos Tejedor</x:String>
+                            <x:String>Carmen de Areco</x:String>
+                            <x:String>Carmen de Patagones</x:String>
+                            <x:String>Castelli</x:String>
+                            <x:String>Chacabuco</x:String>
+                            <x:String>Chascomus</x:String>
+                            <x:String>Chivilcoy</x:String>
+                            <x:String>Cnel. Brandsen</x:String>
+                            <x:String>Cnel. Dorrego</x:String>
+                            <x:String>Cnel. Pringles</x:String>
+                            <x:String>Cnel. Rosales</x:String>
+                            <x:String>Cnel. Suarez</x:String>
+                            <x:String>Colon</x:String>
+                            <x:String>Daireaux</x:String>
+                            <x:String>Dolores</x:String>
+                            <x:String>E. Echeverria</x:String>
+                            <x:String>Ensenada</x:String>
+                            <x:String>Escobar</x:String>
+                            <x:String>Ex.de la Cruz</x:String>
+                            <x:String>Ezeiza</x:String>
+                            <x:String>Fcio. Varela</x:String>
+                            <x:String>Gonzalez Chavez</x:String>
+                            <x:String>Gral. Alvarado</x:String>
+                            <x:String>Gral. Alvear</x:String>
+                            <x:String>Gral. Arenales</x:String>
+                            <x:String>Gral. Belgrano</x:String>
+                            <x:String>Gral. Guido</x:String>
+                            <x:String>Gral. Lamadrid</x:String>
+                            <x:String>Gral. Las Heras</x:String>
+                          </scg:List>
+                        </ui:SelectItem.Items>
+                        <ui:SelectItem.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3b85400a-e536-4d8a-b563-4bfe32a48953" InformativeScreenshot="77d2b355947e641c87137389e1240da0" Selector="&lt;webctrl id='cboPartido' tag='SELECT' class='form-control' /&gt;">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:SelectItem.Target>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:SelectItem>
+                    </If.Else>
+                  </If>
+                  <ui:CommentOut DisplayName="Comment Out - slector partid dinamico" sap:VirtualizedContainerService.HintSize="575,61" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="401,266" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item 'SELECT  cboLocalidad'" sap:VirtualizedContainerService.HintSize="359,164" sap2010:WorkflowViewState.IdRef="SelectItem_5" Item="[String.Format(&quot;{0} ({1})&quot;, in_direccionLocalidad, in_direccionCp)]">
+                          <ui:SelectItem.Items>
+                            <scg:List x:TypeArguments="x:String" Capacity="50">
+                              <x:String></x:String>
+                              <x:String>AARON CASTELLANOS (6106)</x:String>
+                              <x:String>ABIPONES (3042)</x:String>
+                              <x:String>ACEBAL (2109)</x:String>
+                              <x:String>AERO CLUB ROSARIO (2132)</x:String>
+                              <x:String>AGUARA GRANDE (3071)</x:String>
+                              <x:String>AGUARA (3074)</x:String>
+                              <x:String>ALBARELLOS (2101)</x:String>
+                              <x:String>ALCORTA (2117)</x:String>
+                              <x:String>ALCORTA (3070)</x:String>
+                              <x:String>ALDAO (2214)</x:String>
+                              <x:String>ALEJANDRA (3051)</x:String>
+                              <x:String>ALTO VERDE (3001)</x:String>
+                              <x:String>ALVAREZ (2107)</x:String>
+                              <x:String>ALVEAR (2126)</x:String>
+                              <x:String>AMBROSETTI (2339)</x:String>
+                              <x:String>AMBROSETTI (2352)</x:String>
+                              <x:String>AMENABAR (6103)</x:String>
+                              <x:String>ANDINO (2214)</x:String>
+                              <x:String>ANGEL GALLARDO (3014)</x:String>
+                              <x:String>ANGELICA VIEJA (2303)</x:String>
+                              <x:String>ANGELICA (2303)</x:String>
+                              <x:String>ANTARTIDA ARGENTINA (2000)</x:String>
+                              <x:String>ANTONIO PINI (3061)</x:String>
+                              <x:String>AREQUITO (2183)</x:String>
+                              <x:String>ARIJON (2242)</x:String>
+                              <x:String>ARMINDA (2119)</x:String>
+                              <x:String>ARMSTRONG (2508)</x:String>
+                              <x:String>AROCENA (2242)</x:String>
+                              <x:String>AROMOS (3036)</x:String>
+                              <x:String>ARRASCAETA (3046)</x:String>
+                              <x:String>ARROCERA BARRANCAS (2246)</x:String>
+                              <x:String>ARROYO AGUIAR (3014)</x:String>
+                              <x:String>ARROYO CEIBAL (3575)</x:String>
+                              <x:String>ARROYO DEL MEDIO (2113)</x:String>
+                              <x:String>ARROYO DEL REY (3565)</x:String>
+                              <x:String>ARROYO LEYES (3001)</x:String>
+                              <x:String>ARROYO SECO (2128)</x:String>
+                              <x:String>ARRUFO (2344)</x:String>
+                              <x:String>ARSENAL DE GUERRA SAN LORENZO (2156)</x:String>
+                              <x:String>ARTEAGA (2187)</x:String>
+                              <x:String>ASCOCHINGAS (3014)</x:String>
+                              <x:String>ATALIVA (2307)</x:String>
+                              <x:String>AURELIA NORTE (2318)</x:String>
+                              <x:String>AURELIA SUD (2318)</x:String>
+                              <x:String>AURELIA (2318)</x:String>
+                              <x:String>AVELLANEDA (3561)</x:String>
+                              <x:String>AVENA (2449)</x:String>
+                              <x:String>AVICHUCHO (3040)</x:String>
+                              <x:String>BAJO LAS TUNAS (3017)</x:String>
+                            </scg:List>
+                          </ui:SelectItem.Items>
+                          <ui:SelectItem.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9654d879-92d1-420b-828c-05557be28479" InformativeScreenshot="1e5c7e163d1ad46277aec33e7a25b8d3" Selector="&lt;webctrl id='cboLocalidad' tag='SELECT' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:SelectItem.Target>
+                        </ui:SelectItem>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
+                  <If Condition="[in_direccionLocalidad.ToLower.Contains(&quot;villa nue&quot;)]" DisplayName="If - es mendoza villa nuva 5521" sap:VirtualizedContainerService.HintSize="575,228" sap2010:WorkflowViewState.IdRef="If_4">
+                    <If.Then>
+                      <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item - MENDOZA VILLA NUEVA" sap:VirtualizedContainerService.HintSize="265,61" sap2010:WorkflowViewState.IdRef="SelectItem_8" Item="VILLANUEVA (5521)">
+                        <ui:SelectItem.Items>
+                          <scg:List x:TypeArguments="x:String" Capacity="50">
+                            <x:String>SAN MIGUEL (5537)</x:String>
+                            <x:String>SAN PEDRO DEL ATUEL (5621)</x:String>
+                            <x:String>SAN RAFAEL (5600)</x:String>
+                            <x:String>SAN ROQUE (5587)</x:String>
+                            <x:String>SANTA BLANCA (5531)</x:String>
+                            <x:String>SANTA ELENA (5634)</x:String>
+                            <x:String>SANTA MARIA DE ORO (5579)</x:String>
+                            <x:String>SANTA ROSA (5596)</x:String>
+                            <x:String>SANTA TERESA (5605)</x:String>
+                            <x:String>SARMIENTO (5513)</x:String>
+                            <x:String>SECCION SEXTA (6ta.) (5500)</x:String>
+                            <x:String>SOITUE (5632)</x:String>
+                            <x:String>TERMAS VILLAVICENCIO (5545)</x:String>
+                            <x:String>TOTORAL TUNUYAN (5560)</x:String>
+                            <x:String>TRES DE MAYO (5543)</x:String>
+                            <x:String>TRES ESQUINAS DE CRUZ DE PIEDRA (5517)</x:String>
+                            <x:String>TRES ESQUINAS (5514)</x:String>
+                            <x:String>TRES ESQUINAS (5866)</x:String>
+                            <x:String>TRES PORTEÑAS (5589)</x:String>
+                            <x:String>TROPERO SOSA (5539)</x:String>
+                            <x:String>TULUMAYA (5533)</x:String>
+                            <x:String>TUNUYAN (5560)</x:String>
+                            <x:String>TUPUNGATO (5561)</x:String>
+                            <x:String>UGARTECHE - (DEP 631) (5509)</x:String>
+                            <x:String>UGARTECHE (5509)</x:String>
+                            <x:String>USPALLATA (5545)</x:String>
+                            <x:String>VALLE DE LAS LEÑAS (5612)</x:String>
+                            <x:String>VERGEL (5527)</x:String>
+                            <x:String>VILLA AMBROSIO (5570)</x:String>
+                            <x:String>VILLA ANTIGUA (5590)</x:String>
+                            <x:String>VILLA ARGENTINA (5582)</x:String>
+                            <x:String>VILLA ATUEL (5622)</x:String>
+                            <x:String>VILLA CENTENARIO (5570)</x:String>
+                            <x:String>VILLA DEL CARMEN (5570)</x:String>
+                            <x:String>VILLA HIPODROMO - (DEP 631) (5547)</x:String>
+                            <x:String>VILLA HIPODROMO (5547)</x:String>
+                            <x:String>VILLA MARINI - (DEP 631) (5547)</x:String>
+                            <x:String>VILLA MARINI (5547)</x:String>
+                            <x:String>VILLA MOLINO ORFILA (5571)</x:String>
+                            <x:String>VILLA NUEVA (5523)</x:String>
+                            <x:String>VILLA SECA DE TUNUYAN (5563)</x:String>
+                            <x:String>VILLA SECA (5588)</x:String>
+                            <x:String>VILLA 25 DE MAYO (5570)</x:String>
+                            <x:String>VILLA 25 DE MAYO (5615)</x:String>
+                            <x:String>VILLANUEVA - (DEP 631) (5521)</x:String>
+                            <x:String>VILLANUEVA (5521)</x:String>
+                            <x:String>VISTA FLORES (5565)</x:String>
+                            <x:String>VISTALBA - (DEP 631) (5509)</x:String>
+                            <x:String>VISTALBA (5509)</x:String>
+                            <x:String>3 DE MAYO (5745)</x:String>
+                          </scg:List>
+                        </ui:SelectItem.Items>
+                        <ui:SelectItem.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f0dc1952-f623-4cfe-b51a-fbc9bb644111" InformativeScreenshot="919351d6f671bf4cabfc33ad14267408" Selector="&lt;webctrl id='cboLocalidad' tag='SELECT' /&gt;">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:SelectItem.Target>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:SelectItem>
+                    </If.Then>
+                    <If.Else>
+                      <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into LOCALIDAD - cualquier caso" EmptyField="True" sap:VirtualizedContainerService.HintSize="265,61" sap2010:WorkflowViewState.IdRef="TypeInto_4" Text="[String.Format(&quot;{0} ({1})&quot;, in_direccionLocalidad, in_direccionCp).ToUpper]">
+                        <ui:TypeInto.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="23ff2637-31ad-4cad-8515-6dc0a2f8384d" InformativeScreenshot="6de288e3b3eaf22d15dad7a8ed2c094b" Selector="&lt;webctrl id='cboLocalidad' tag='SELECT' /&gt;">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:TypeInto.Target>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:TypeInto>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:Click AlterIfDisabled="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="[delayBefore]" DisplayName="Click - Boton siguiente" sap:VirtualizedContainerService.HintSize="1468,116" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7928b5f9-54b8-45fa-aea6-b6bcfca5fe1d" InformativeScreenshot="8613bad1a60afa10ed0508a97dfb48ff" Selector="&lt;webctrl id='btnSiguiente' tag='A' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:Click.Target>
+            </ui:Click>
+            <ui:UiElementExists DisplayName="Element Exists - paso 4 datos del contrato" Exists="[datosContratoExists]" sap:VirtualizedContainerService.HintSize="1468,116" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+              <ui:UiElementExists.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bfe4396a-6ebc-42ab-9a02-a6120caac8ff" InformativeScreenshot="dfee74d893f4a2450982f3822b9f4bd3" Selector="&lt;html app='chrome.exe' url='https://servicioscf.afip.gob.ar/fiscalizacion/reli/app/contrato/*' /&gt;&lt;webctrl tag='H2' class='h2' visibleinnertext='4. Datos del contrato' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:UiElementExists.Target>
+            </ui:UiElementExists>
+            <If Condition="[datosContratoExists = True]" DisplayName="If - estamos en el paso 4" sap:VirtualizedContainerService.HintSize="1468,1329" sap2010:WorkflowViewState.IdRef="If_3">
+              <If.Then>
+                <Sequence DisplayName="Se completo correctamente paso 3" sap:VirtualizedContainerService.HintSize="480,581" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch DisplayName="Try Catch -  enviar log message" sap:VirtualizedContainerService.HintSize="438,338" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                    <TryCatch.Try>
+                      <ui:LogMessage DisplayName="Log Message -  Datos cargados" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[String.Format(&quot;Datos cargados::: Local {0} - Provincia {1} - Partido {2} - CP {3} - Comuna ({4}) - Calle y nro {5} {6} - Localidad ({7})&quot;, in_unidadLocal, in_direccionProvincia, in_direccionPartido, in_direccionCp, in_direccionComuna, in_direccionCalle, in_direccionNumero, in_direccionLocalidad)]" />
+                    </TryCatch.Try>
+                    <TryCatch.Catches>
+                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ActivityAction x:TypeArguments="s:Exception">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                          </ActivityAction.Argument>
+                        </ActivityAction>
+                      </Catch>
+                    </TryCatch.Catches>
+                  </TryCatch>
+                  <ui:LogMessage DisplayName="Log Message - se completo la carga" sap:VirtualizedContainerService.HintSize="438,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Se pudo completar el paso 3 datos inmueble&quot;]" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="No se cargo el paso 3" sap:VirtualizedContainerService.HintSize="943,1162" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DelayBefore="[delayBefore]" DisplayName="Click - Boton siguiente" sap:VirtualizedContainerService.HintSize="901,116" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7928b5f9-54b8-45fa-aea6-b6bcfca5fe1d" InformativeScreenshot="8613bad1a60afa10ed0508a97dfb48ff" Selector="&lt;webctrl id='btnSiguiente' tag='A' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:Click.Target>
+                  </ui:Click>
+                  <ui:UiElementExists DisplayName="Element Exists - paso 4 datos del contrato" Exists="[datosContratoExists]" sap:VirtualizedContainerService.HintSize="901,116" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                    <ui:UiElementExists.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bfe4396a-6ebc-42ab-9a02-a6120caac8ff" InformativeScreenshot="dfee74d893f4a2450982f3822b9f4bd3" Selector="&lt;html app='chrome.exe' url='https://servicioscf.afip.gob.ar/fiscalizacion/reli/app/contrato/*' /&gt;&lt;webctrl tag='H2' class='h2' visibleinnertext='4. Datos del contrato' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:UiElementExists.Target>
+                  </ui:UiElementExists>
+                  <If Condition="[datosContratoExists = True]" DisplayName="If - estamos en el paso 4" sap:VirtualizedContainerService.HintSize="901,748" sap2010:WorkflowViewState.IdRef="If_5">
+                    <If.Then>
+                      <Sequence DisplayName="Se completo correctamente paso 3" sap:VirtualizedContainerService.HintSize="480,581" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <TryCatch DisplayName="Try Catch -  enviar log message" sap:VirtualizedContainerService.HintSize="438,338" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                          <TryCatch.Try>
+                            <ui:LogMessage DisplayName="Log Message -  Datos cargados" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[String.Format(&quot;Datos cargados::: Local {0} - Provincia {1} - Partido {2} - CP {3} - Comuna ({4}) - Calle y nro {5} {6} - Localidad ({7})&quot;, in_unidadLocal, in_direccionProvincia, in_direccionPartido, in_direccionCp, in_direccionComuna, in_direccionCalle, in_direccionNumero, in_direccionLocalidad)]" />
+                          </TryCatch.Try>
+                          <TryCatch.Catches>
+                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ActivityAction x:TypeArguments="s:Exception">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                </ActivityAction.Argument>
+                              </ActivityAction>
+                            </Catch>
+                          </TryCatch.Catches>
+                        </TryCatch>
+                        <ui:LogMessage DisplayName="Log Message - se completo la carga" sap:VirtualizedContainerService.HintSize="438,101" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Se pudo completar el paso 3 datos inmueble&quot;]" />
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="No se cargo el paso 3" sap:VirtualizedContainerService.HintSize="376,313" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message No se cargo" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Warn" Message="[&quot;No se pudo completar el paso 3 datos inmueble&quot;]" />
+                        <Assign DisplayName="Assign -  out observaciones" sap:VirtualizedContainerService.HintSize="334,70" sap2010:WorkflowViewState.IdRef="Assign_3">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[out_observaciones]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">No se pudo completar el paso 3(Datos Inmueble).</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:BrowserScope.Body>
+    </ui:BrowserScope>
+  </Sequence>
+</Activity>

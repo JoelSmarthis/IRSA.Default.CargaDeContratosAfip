@@ -1,0 +1,192 @@
+{
+    "development":{
+	"processQueueName":"QCargaDeContratosAfip",
+	"processQueueFolder":"0.Tests-QA",
+
+
+	"initializationLogQueueName":"InitializationLogQueueDev",
+	"initializationLogQueueFolder":"InitializationQueueFolderDev",
+	
+	"inputFolderPath":"C:\\UiPath\\05.CargaDeContratosAfip\\02.Input",
+	"outputFolderPath":"C:\\UiPath\\05.CargaDeContratosAfip\\03.Output",
+	"externalFolderPath":"T:\\Calidad de Procesos\\RPA\\Operaciones comerciales\\05.CargaDeContratosAfip",
+	"direccionesFilePath":"C:\\UiPath\\05.CargaDeContratosAfip\\01.Automation\\CargaDeContratosAfip\\01-Data\\Input\\Direcciones.xlsx",
+
+
+	"sapUrlPath":"C:\\SAP_Logon.lnk",
+
+	"tempFolderPath":"C:\\Temp",
+	
+	"maxRetryNumberInitApplications": 2,
+	"maxRetryNumberProcess": 1,
+	"maxConsecutiveSystemExceptions": 0,
+
+	"useStorageBucketFiles": false,
+	"localBucketDir": "01-Data\\Temp\\",
+
+	"manualExecutionTime": 30,
+
+	"exScreenshotsFolderPath":"T:\\Calidad de Procesos\\RPA\\00.Dashboard\\ErrorScreenshots",
+
+	"businessProcessName":"",
+
+	"assets":{
+            "emailList":{
+		"name":"Contratos_EmailList",
+		"orchestratorFolder":"0.Tests-QA",
+		},
+            "bcc_EmailList":{
+		"name":"cc_EmailList",
+		"orchestratorFolder":"0.Tests-QA"
+		},
+            "emailSupportList":{
+		"name":"emailSupportList",
+		"orchestratorFolder":"0.Tests-QA"
+		},
+	   "dashboardDataPath":{
+		"name":"DashboardDataPath",
+		"orchestratorFolder":"0.Tests-QA"
+		},
+	   "emailSenderName":{
+		"name":"emailSenderName",
+		"orchestratorFolder":"0.Tests-QA"
+		},
+ 	   "emailSenderFrom":{
+		"name":"emailSenderFrom",
+		"orchestratorFolder":"0.Tests-QA"
+		},
+ 	   "emailServer":{
+		"name":"emailServer",
+		"orchestratorFolder":"0.Tests-QA"
+		},
+ 	   "emailPort":{
+		"name":"emailPort",
+		"orchestratorFolder":"0.Tests-QA"
+		},
+ 	   "sapClientCode":{
+		"name":"sapClientCode",
+		"orchestratorFolder":"0.Tests-QA"
+		},
+ 	   "sapEnvironment":{
+		"name":"prdSapEnvironment",
+		"orchestratorFolder":"0.Tests-QA"
+		}
+        },
+        
+	"credentials":{
+		"qasapCredentials":{
+		"name":"qaSapCredentials",
+	   "orchestratorFolder":"0.Tests-QA"
+		},
+		"sapCredentials":{
+		"name":"prdSapCredentialsAtten",
+	   "orchestratorFolder":"0.Tests-QA"
+		},
+		"afipCredentials":{
+		"name":"ContratosAfipCredentials",
+	   "orchestratorFolder":"0.Tests-QA"
+		},
+		"EmailSenderCredentials":{
+		"name":"emailSenderCredentials",
+	   "orchestratorFolder":"0.Tests-QA"
+		}
+	}
+
+
+    },
+    "attended":{
+	"processQueueName":"QCargaDeContratosAfip",
+	"processQueueFolder":"Attended Processes",
+
+
+
+	"initializationLogQueueName":"InitializationLogQueueDev",
+	"initializationLogQueueFolder":"InitializationQueueFolderDev",
+	
+	"inputFolderPath":"C:\\UiPath\\05.CargaDeContratosAfip\\02.Input",
+	"outputFolderPath":"C:\\UiPath\\05.CargaDeContratosAfip\\03.Output",
+	"externalFolderPath":"T:\\Calidad de Procesos\\RPA\\Operaciones comerciales\\05.CargaDeContratosAfip",
+	"direccionesFilePath":"C:\\UiPath\\05.CargaDeContratosAfip\\01.Automation\\CargaDeContratosAfip\\01-Data\\Input\\Direcciones.xlsx",
+
+
+	"sapUrlPath":"C:\\SAP_Logon.lnk",
+
+	"tempFolderPath":"C:\\Temp",
+	
+	"maxRetryNumberInitApplications": 2,
+	"maxRetryNumberProcess": 1,
+	"maxConsecutiveSystemExceptions": 0,
+
+	"useStorageBucketFiles": false,
+	"localBucketDir": "01-Data\\Temp\\",
+
+	"manualExecutionTime": 30,
+
+	"exScreenshotsFolderPath":"T:\\Calidad de Procesos\\RPA\\00.Dashboard\\ErrorScreenshots",
+
+	"businessProcessName":"",
+
+	"assets":{
+            "emailList":{
+		"name":"Contratos_EmailList",
+		"orchestratorFolder":"Attended Processes",
+		},
+            "bcc_EmailList":{
+		"name":"cc_EmailList",
+		"orchestratorFolder":"Attended Processes"
+		},
+            "emailSupportList":{
+		"name":"emailSupportList",
+		"orchestratorFolder":"Attended Processes"
+		},
+	   "dashboardDataPath":{
+		"name":"DashboardDataPath",
+		"orchestratorFolder":"Attended Processes"
+		},
+	   "emailSenderName":{
+		"name":"emailSenderName",
+		"orchestratorFolder":"Attended Processes"
+		},
+ 	   "emailSenderFrom":{
+		"name":"emailSenderFrom",
+		"orchestratorFolder":"Attended Processes"
+		},
+ 	   "emailServer":{
+		"name":"emailServer",
+		"orchestratorFolder":"Attended Processes"
+		},
+ 	   "emailPort":{
+		"name":"emailPort",
+		"orchestratorFolder":"Attended Processes"
+		},
+ 	   "sapClientCode":{
+		"name":"sapClientCode",
+		"orchestratorFolder":"Attended Processes"
+		},
+ 	   "sapEnvironment":{
+		"name":"prdSapEnvironment",
+		"orchestratorFolder":"Attended Processes"
+		}
+        },
+        
+	"credentials":{
+		"sapCredentials":{
+		"name":"prdSapCredentialsAtten",
+	   "orchestratorFolder":"Attended Processes"
+		},
+		"SharepointCredentials":{
+		"name":"SharepointCredentials",
+	   "orchestratorFolder":"Attended Processes"
+		},
+		"afipCredentials":{
+		"name":"ContratosAfipCredentials",
+	   "orchestratorFolder":"Attended Processes"
+		},
+		"EmailSenderCredentials":{
+		"name":"emailSenderCredentials",
+	   "orchestratorFolder":"Attended Processes"
+		}
+	}
+
+
+    }

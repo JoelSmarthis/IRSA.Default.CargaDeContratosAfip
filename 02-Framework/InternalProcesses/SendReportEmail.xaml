@@ -1,0 +1,415 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="SendReportMail" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_stepError" Type="InArgument(x:String)" />
+    <x:Property Name="in_config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_duration" Type="InArgument(x:TimeSpan)" />
+    <x:Property Name="in_businessRuleException" Type="InArgument(ui:BusinessRuleException)" />
+    <x:Property Name="in_systemException" Type="InArgument(s:Exception)" />
+    <x:Property Name="in_getDataException" Type="InArgument(s:Exception)" />
+    <x:Property Name="in_initException" Type="InArgument(s:Exception)" />
+    <x:Property Name="in_dtReportStatus" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_contratosCargados" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_archivosSinCargar" Type="InArgument(x:String)" />
+    <x:Property Name="in_totalidadArchivos" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_tablaActual" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:SendReportMail.in_dtReportStatus>
+    <InArgument x:TypeArguments="sd:DataTable" />
+  </this:SendReportMail.in_dtReportStatus>
+  <this:SendReportMail.in_tablaActual>
+    <InArgument x:TypeArguments="x:String" />
+  </this:SendReportMail.in_tablaActual>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1115,3490</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>SendReportMail_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="37">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Net</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="35">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="SendReportMail" sap:VirtualizedContainerService.HintSize="1125,3305" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="emailBodyText" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <If Condition="[in_initException IsNot Nothing or in_getDataException IsNot Nothing]" DisplayName="If  there is  an error or the procees end succesfully" sap:VirtualizedContainerService.HintSize="1083,3062" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence DisplayName="Sequence process failed email" sap:VirtualizedContainerService.HintSize="480,767" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ReadTextFile File="{x:Null}" Content="[emailBodyText]" DisplayName="Read Text File template Mail error" FileName="C:\UiPath\05.CargaDeContratosAfip\03.Output\EmailTemplates\template-email-error.txt" sap:VirtualizedContainerService.HintSize="438,89" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+          <ui:LogMessage DisplayName="Log Message error" sap:VirtualizedContainerService.HintSize="438,101" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(emailBodyText, in_initException, in_getDataException, in_systemException, in_businessRuleException)]" />
+          <TryCatch DisplayName="Try Catch send email" sap:VirtualizedContainerService.HintSize="438,395" sap2010:WorkflowViewState.IdRef="TryCatch_7">
+            <TryCatch.Try>
+              <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" AttachmentsCollection="[{in_systemException.Data(&quot;screenshotPath&quot;).ToString}]" Body="[String.Format(emailBodyText, in_initException, in_getDataException, in_systemException, in_businessRuleException)]" DisplayName="Send SMTP Mail Message - ERROR" Email="[DirectCast(in_config(&quot;credentials_EmailSenderCredentials_username&quot;), String)]" EnableSSL="True" From="[DirectCast(in_config(&quot;emailSenderFrom&quot;), String)]" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="SendMail_13" IsBodyHtml="True" Name="[DirectCast(in_config(&quot;emailSenderName&quot;), String)]" Password="[New System.Net.NetworkCredential(&quot;&quot;, DirectCast(in_config(&quot;credentials_EmailSenderCredentials_password&quot;), System.Security.SecureString)).Password]" Port="[CInt(in_config(&quot;emailPort&quot;))]" SecureConnection="Auto" Server="[DirectCast(in_config(&quot;emailServer&quot;), String)]" Subject="[String.Format(&quot;[ERROR] Carga de Contratos AFIP - {0}&quot;, Now.ToString(&quot;dd/MM/yyyy&quot;))]" To="[DirectCast(in_config(&quot;emsailSupportList&quot;), String)]">
+                <ui:SendMail.Files>
+                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+                </ui:SendMail.Files>
+              </ui:SendMail>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_7">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                  </ActivityAction.Argument>
+                  <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[String.Format(emailBodyText, in_initException, in_getDataException, in_systemException, in_businessRuleException)]" DisplayName="Send SMTP Mail Message - ERROR sin scshot" Email="[DirectCast(in_config(&quot;credentials_EmailSenderCredentials_username&quot;), String)]" EnableSSL="True" From="[DirectCast(in_config(&quot;emailSenderFrom&quot;), String)]" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="SendMail_18" IsBodyHtml="True" Name="[DirectCast(in_config(&quot;emailSenderName&quot;), String)]" Password="[New System.Net.NetworkCredential(&quot;&quot;, DirectCast(in_config(&quot;credentials_EmailSenderCredentials_password&quot;), System.Security.SecureString)).Password]" Port="[CInt(in_config(&quot;emailPort&quot;))]" SecureConnection="Auto" Server="[DirectCast(in_config(&quot;emailServer&quot;), String)]" Subject="[String.Format(&quot;[ERROR] Carga de Contratos AFIP - {0}&quot;, Now.ToString(&quot;dd/MM/yyyy&quot;))]" To="[DirectCast(in_config(&quot;emailSupportList&quot;), String)]">
+                    <ui:SendMail.Files>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+                    </ui:SendMail.Files>
+                  </ui:SendMail>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+          </TryCatch>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Sequence sucessfull process email" sap:VirtualizedContainerService.HintSize="558,2894" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="emailBodyTextTwo" />
+            <Variable x:TypeArguments="x:String" Name="dtHtmlReportStatus" />
+            <Variable x:TypeArguments="x:String" Name="strHtmlUploadFiles" />
+            <Variable x:TypeArguments="x:String" Name="urlSharepoint" />
+            <Variable x:TypeArguments="x:Int32" Name="totalWorkItems" />
+            <Variable x:TypeArguments="sd:DataTable" Name="dtListadoContratos" />
+            <Variable x:TypeArguments="x:String" Name="resumenActualHtml" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:FilterDataTable DataTable="[in_dtReportStatus]" DisplayName="Filter Data Table - Keep necessary Columns " FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="516,170" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtListadoContratos]" SelectColumnsMode="Keep">
+            <ui:FilterDataTable.Filters>
+              <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
+              </scg:List>
+            </ui:FilterDataTable.Filters>
+            <ui:FilterDataTable.SelectColumns>
+              <scg:List x:TypeArguments="InArgument" Capacity="16">
+                <InArgument x:TypeArguments="x:String">["Nro. Oferta"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["Inicio Contrato"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["Fin Contrato"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["Fecha de firma"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["Sociedad"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["CUIT Locatario"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["Shopping"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["Nombre CLOC"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["Cliente CFAN"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["VMA Negociado"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["Moneda"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["Unidad"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["Nombre Cl. Contrato"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["Estado"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["En_fecha"]</InArgument>
+              </scg:List>
+            </ui:FilterDataTable.SelectColumns>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:FilterDataTable>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="DataTableToHtml.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="516,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\DataTableToHtml.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="Inputdata_DT">[dtListadoContratos]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="HTML_str">[dtHtmlReportStatus]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="StyleCSS_str">table, th, td {border: 1px solid #005f6b; border-collapse: collapse; font-size: 12px; text-align: left;}</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:ReadTextFile File="{x:Null}" Content="[emailBodyTextTwo]" DisplayName="Read Text - email template sucess" FileName="C:\UiPath\05.CargaDeContratosAfip\03.Output\EmailTemplates\template-email-success.txt" sap:VirtualizedContainerService.HintSize="516,89" sap2010:WorkflowViewState.IdRef="ReadTextFile_9" />
+          <Assign sap:VirtualizedContainerService.HintSize="516,70" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[totalWorkItems]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[in_dtReportStatus.Rows.Count]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:LogMessage DisplayName="Log Message  success" sap:VirtualizedContainerService.HintSize="516,101" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[String.Format(emailBodyTextTwo, in_contratosCargados, dtHtmlReportStatus, in_duration, totalWorkItems, in_archivosSinCargar)]" />
+          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[String.Format(emailBodyTextTwo, in_contratosCargados, dtHtmlReportStatus, in_duration, in_totalidadArchivos, in_archivosSinCargar, totalWorkItems)]" DisplayName="Send SMTP Mail Message - SUCCESS" Email="[DirectCast(in_config(&quot;credentials_EmailSenderCredentials_username&quot;), String)]" EnableSSL="True" From="[DirectCast(in_config(&quot;emailSenderFrom&quot;), String)]" sap:VirtualizedContainerService.HintSize="516,158" sap2010:WorkflowViewState.IdRef="SendMail_25" IsBodyHtml="True" Name="[DirectCast(in_config(&quot;emailSenderName&quot;), String)]" Password="[New System.Net.NetworkCredential(&quot;&quot;, DirectCast(in_config(&quot;credentials_EmailSenderCredentials_password&quot;), System.Security.SecureString)).Password]" Port="[CInt(in_config(&quot;emailPort&quot;))]" SecureConnection="Auto" Server="[DirectCast(in_config(&quot;emailServer&quot;), String)]" Subject="[String.Format(&quot;Carga de Contratos AFIP - {0}&quot;, Now.ToString(&quot;dd/MM/yyyy&quot;))]" To="joel.fiad@smarthis.com">
+            <ui:SendMail.Files>
+              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+            </ui:SendMail.Files>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:SendMail>
+          <ui:ReadTextFile File="{x:Null}" Content="[emailBodyTextTwo]" DisplayName="Read Text - email template sucess" FileName="C:\UiPath\05.CargaDeContratosAfip\03.Output\EmailTemplates\template-email-success-users.txt" sap:VirtualizedContainerService.HintSize="516,89" sap2010:WorkflowViewState.IdRef="ReadTextFile_10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ReadTextFile>
+          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[String.Format(emailBodyTextTwo, in_duration, in_tablaActual)]" DisplayName="Send SMTP Mail Message - SUCCESS" Email="[DirectCast(in_config(&quot;credentials_EmailSenderCredentials_username&quot;), String)]" EnableSSL="True" From="[DirectCast(in_config(&quot;emailSenderFrom&quot;), String)]" sap:VirtualizedContainerService.HintSize="516,158" sap2010:WorkflowViewState.IdRef="SendMail_26" IsBodyHtml="True" Name="[DirectCast(in_config(&quot;emailSenderName&quot;), String)]" Password="[New System.Net.NetworkCredential(&quot;&quot;, DirectCast(in_config(&quot;credentials_EmailSenderCredentials_password&quot;), System.Security.SecureString)).Password]" Port="[CInt(in_config(&quot;emailPort&quot;))]" SecureConnection="Auto" Server="[DirectCast(in_config(&quot;emailServer&quot;), String)]" Subject="[String.Format(&quot;Carga de Contratos AFIP - {0}&quot;, Now.ToString(&quot;dd/MM/yyyy&quot;))]" To="joel.fiad@smarthis.com">
+            <ui:SendMail.Files>
+              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+            </ui:SendMail.Files>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:SendMail>
+          <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="516,395" sap2010:WorkflowViewState.IdRef="TryCatch_10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <TryCatch.Try>
+              <ui:SendMail Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Bcc="[DirectCast(in_config(&quot;bcc_EmailList&quot;), String)]" Body="[String.Format(emailBodyTextTwo, in_duration, in_tablaActual)]" DisplayName="Send SMTP Mail Message - SUCCESS" Email="[DirectCast(in_config(&quot;credentials_EmailSenderCredentials_username&quot;), String)]" EnableSSL="True" From="[DirectCast(in_config(&quot;emailSenderFrom&quot;), String)]" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="SendMail_29" IsBodyHtml="True" Name="[DirectCast(in_config(&quot;emailSenderName&quot;), String)]" Password="[New System.Net.NetworkCredential(&quot;&quot;, DirectCast(in_config(&quot;credentials_EmailSenderCredentials_password&quot;), System.Security.SecureString)).Password]" Port="[CInt(in_config(&quot;emailPort&quot;))]" SecureConnection="Auto" Server="[DirectCast(in_config(&quot;emailServer&quot;), String)]" Subject="[String.Format(&quot;Carga de Contratos AFIP - {0}&quot;, Now.ToString(&quot;dd/MM/yyyy&quot;))]" To="[DirectCast(in_config(&quot;emailList&quot;), String)]">
+                <ui:SendMail.Files>
+                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+                </ui:SendMail.Files>
+              </ui:SendMail>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_11">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                  </ActivityAction.Argument>
+                  <ui:SendMail Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Bcc="[DirectCast(in_config(&quot;bcc_EmailList&quot;), String)]" Body="[String.Format(emailBodyTextTwo, in_duration, in_tablaActual)]" DisplayName="Send SMTP Mail Message - SUCCESS" Email="[DirectCast(in_config(&quot;credentials_EmailSenderCredentials_username&quot;), String)]" EnableSSL="True" From="[DirectCast(in_config(&quot;emailSenderFrom&quot;), String)]" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="SendMail_30" IsBodyHtml="True" Name="[DirectCast(in_config(&quot;emailSenderName&quot;), String)]" Password="[New System.Net.NetworkCredential(&quot;&quot;, DirectCast(in_config(&quot;credentials_EmailSenderCredentials_password&quot;), System.Security.SecureString)).Password]" Port="[CInt(in_config(&quot;emailPort&quot;))]" SecureConnection="Auto" Server="[DirectCast(in_config(&quot;emailServer&quot;), String)]" Subject="[String.Format(&quot;Carga de Contratos AFIP - {0}&quot;, Now.ToString(&quot;dd/MM/yyyy&quot;))]" To="[DirectCast(in_config(&quot;emailList&quot;), String)]">
+                    <ui:SendMail.Files>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+                    </ui:SendMail.Files>
+                  </ui:SendMail>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+          </TryCatch>
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="516,1080" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="480,992" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[String.Format(emailBodyTextTwo, in_duration, in_tablaActual)]" DisplayName="Send SMTP Mail Message - SUCCESS" Email="[DirectCast(in_config(&quot;credentials_EmailSenderCredentials_username&quot;), String)]" EnableSSL="True" From="[DirectCast(in_config(&quot;emailSenderFrom&quot;), String)]" sap:VirtualizedContainerService.HintSize="438,155" sap2010:WorkflowViewState.IdRef="SendMail_31" IsBodyHtml="True" Name="[DirectCast(in_config(&quot;emailSenderName&quot;), String)]" Password="[New System.Net.NetworkCredential(&quot;&quot;, DirectCast(in_config(&quot;credentials_EmailSenderCredentials_password&quot;), System.Security.SecureString)).Password]" Port="[CInt(in_config(&quot;emailPort&quot;))]" SecureConnection="Auto" Server="[DirectCast(in_config(&quot;emailServer&quot;), String)]" Subject="[String.Format(&quot;Carga de Contratos AFIP - {0}&quot;, Now.ToString(&quot;dd/MM/yyyy&quot;))]" To="joel.fiad@smarthis.com">
+                  <ui:SendMail.Files>
+                    <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+                  </ui:SendMail.Files>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:SendMail>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="02-Framework\InternalProcesses\ArmarReporteUsuarios.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="438,61" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\ArmarReporteUsuarios.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_outputFolderPath">[DirectCast(in_config("outputFolderPath"), String)]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_resumenMensualTemplatePath">[Environment.CurrentDirectory+"\01-Data\Input\monthly_summary_template.xlsx"]</InArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="in_totalWorkItems">[totalWorkItems]</InArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="out_resumenActualHtml">[resumenActualHtml]</OutArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:InvokeWorkflowFile>
+                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,61" sap2010:WorkflowViewState.IdRef="TryCatch_9">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch.Try>
+                    <ui:SendMail Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Bcc="[DirectCast(in_config(&quot;bcc_EmailList&quot;), String)]" Body="[String.Format(emailBodyTextTwo, in_duration, in_tablaActual)]" DisplayName="Send SMTP Mail Message - SUCCESS" Email="[DirectCast(in_config(&quot;credentials_EmailSenderCredentials_username&quot;), String)]" EnableSSL="True" From="[DirectCast(in_config(&quot;emailSenderFrom&quot;), String)]" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="SendMail_27" IsBodyHtml="True" Name="[DirectCast(in_config(&quot;emailSenderName&quot;), String)]" Password="[New System.Net.NetworkCredential(&quot;&quot;, DirectCast(in_config(&quot;credentials_EmailSenderCredentials_password&quot;), System.Security.SecureString)).Password]" Port="[CInt(in_config(&quot;emailPort&quot;))]" SecureConnection="Auto" Server="[DirectCast(in_config(&quot;emailServer&quot;), String)]" Subject="[String.Format(&quot;Carga de Contratos AFIP - {0}&quot;, Now.ToString(&quot;dd/MM/yyyy&quot;))]" To="[DirectCast(in_config(&quot;emailList&quot;), String)]">
+                      <ui:SendMail.Files>
+                        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+                      </ui:SendMail.Files>
+                    </ui:SendMail>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_10">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <ui:SendMail Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Bcc="[DirectCast(in_config(&quot;bcc_EmailList&quot;), String)]" Body="[String.Format(emailBodyTextTwo, in_duration, in_tablaActual)]" DisplayName="Send SMTP Mail Message - SUCCESS" Email="[DirectCast(in_config(&quot;credentials_EmailSenderCredentials_username&quot;), String)]" EnableSSL="True" From="[DirectCast(in_config(&quot;emailSenderFrom&quot;), String)]" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="SendMail_28" IsBodyHtml="True" Name="[DirectCast(in_config(&quot;emailSenderName&quot;), String)]" Password="[New System.Net.NetworkCredential(&quot;&quot;, DirectCast(in_config(&quot;credentials_EmailSenderCredentials_password&quot;), System.Security.SecureString)).Password]" Port="[CInt(in_config(&quot;emailPort&quot;))]" SecureConnection="Auto" Server="[DirectCast(in_config(&quot;emailServer&quot;), String)]" Subject="[String.Format(&quot;Carga de Contratos AFIP - {0}&quot;, Now.ToString(&quot;dd/MM/yyyy&quot;))]" To="[DirectCast(in_config(&quot;emailList&quot;), String)]">
+                          <ui:SendMail.Files>
+                            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+                          </ui:SendMail.Files>
+                        </ui:SendMail>
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
+                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,392" sap2010:WorkflowViewState.IdRef="TryCatch_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch.Try>
+                    <ui:SendMail Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Bcc="[DirectCast(in_config(&quot;bcc_EmailList&quot;), String)]" Body="[String.Format(emailBodyTextTwo, in_contratosCargados, dtHtmlReportStatus, in_duration, in_totalidadArchivos, in_archivosSinCargar, totalWorkItems)]" DisplayName="Send SMTP Mail Message - SUCCESS" Email="[DirectCast(in_config(&quot;credentials_EmailSenderCredentials_username&quot;), String)]" EnableSSL="True" From="[DirectCast(in_config(&quot;emailSenderFrom&quot;), String)]" sap:VirtualizedContainerService.HintSize="334,155" sap2010:WorkflowViewState.IdRef="SendMail_20" IsBodyHtml="True" Name="[DirectCast(in_config(&quot;emailSenderName&quot;), String)]" Password="[New System.Net.NetworkCredential(&quot;&quot;, DirectCast(in_config(&quot;credentials_EmailSenderCredentials_password&quot;), System.Security.SecureString)).Password]" Port="[CInt(in_config(&quot;emailPort&quot;))]" SecureConnection="Auto" Server="[DirectCast(in_config(&quot;emailServer&quot;), String)]" Subject="[String.Format(&quot;Carga de Contratos AFIP - {0}&quot;, Now.ToString(&quot;dd/MM/yyyy&quot;))]" To="[DirectCast(in_config(&quot;emailList&quot;), String)]">
+                      <ui:SendMail.Files>
+                        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+                      </ui:SendMail.Files>
+                    </ui:SendMail>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_9">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <ui:SendMail Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Bcc="[DirectCast(in_config(&quot;bcc_EmailList&quot;), String)]" Body="[String.Format(emailBodyTextTwo, in_contratosCargados, dtHtmlReportStatus, in_duration, totalWorkItems, in_archivosSinCargar)]" DisplayName="Send SMTP Mail Message - SUCCESS" Email="[DirectCast(in_config(&quot;credentials_EmailSenderCredentials_username&quot;), String)]" EnableSSL="True" From="[DirectCast(in_config(&quot;emailSenderFrom&quot;), String)]" sap:VirtualizedContainerService.HintSize="334,155" sap2010:WorkflowViewState.IdRef="SendMail_24" IsBodyHtml="True" Name="[DirectCast(in_config(&quot;emailSenderName&quot;), String)]" Password="[New System.Net.NetworkCredential(&quot;&quot;, DirectCast(in_config(&quot;credentials_EmailSenderCredentials_password&quot;), System.Security.SecureString)).Password]" Port="[CInt(in_config(&quot;emailPort&quot;))]" SecureConnection="Auto" Server="[DirectCast(in_config(&quot;emailServer&quot;), String)]" Subject="[String.Format(&quot;Carga de Contratos AFIP - {0}&quot;, Now.ToString(&quot;dd/MM/yyyy&quot;))]" To="[DirectCast(in_config(&quot;emailList&quot;), String)]">
+                          <ui:SendMail.Files>
+                            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+                          </ui:SendMail.Files>
+                        </ui:SendMail>
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="438,61" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[resumenActualHtml]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+              </Sequence>
+            </ui:CommentOut.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CommentOut>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:LogMessage DisplayName="Log Message email sent" sap:VirtualizedContainerService.HintSize="1083,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Email has been sent!&quot;]" />
+  </Sequence>
+</Activity>
