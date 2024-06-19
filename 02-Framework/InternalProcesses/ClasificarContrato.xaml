@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>746,790</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>695,1174</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ClasificarContrato_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -69,13 +69,13 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ClasificarContrato" sap:VirtualizedContainerService.HintSize="701,685" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ClasificarContrato" sap:VirtualizedContainerService.HintSize="701,1007" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If sap2010:Annotation.AnnotationText="*Caso1: nombre CI Contrato contiene &quot;mod.&quot; (es modificación)&#xA;*Caso2: nombre CI Contrato contiene  &quot;rescisi&quot; (es una rescision)&#xA;*Caso3: nombre CI Contrato contiene &quot;baulera&quot; (es bauleras)&#xA;*Caso4: nombre CI Contrato contiene &quot;of-cont&quot; (es una oficina)&#xA;*Caso5: nombre CI Contrato contiene &quot;de op&quot; (es rescision)&#xA;*Caso6: columna aparece(creada por bot) es mayor a 1. (Se repite el nro oferta) " Condition="[in_nombreClContrato.ToLower.Contains(&quot;mod. &quot;) or in_nombreClContrato.ToLower.Contains(&quot;rescisi&quot;) or in_nombreClContrato.ToLower.Contains(&quot;baulera&quot;)  or in_nombreClContrato.ToLower.Contains(&quot;of-cont.&quot;)  or in_nombreClContrato.ToLower.Contains(&quot;publici&quot;) or ((Cint(in_columnaAparece)) &gt; 1 )]" DisplayName="If Casos actualmente fuera del alcance del bot" sap:VirtualizedContainerService.HintSize="659,442" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="*Caso1: nombre CI Contrato contiene &quot;mod.&quot; (es modificación)&#xA;*Caso2: nombre CI Contrato contiene  &quot;rescisi&quot; (es una rescision)&#xA;*Caso3: nombre CI Contrato contiene &quot;baulera&quot; (es bauleras)&#xA;*Caso4: nombre CI Contrato contiene &quot;of-cont&quot; (es una oficina)&#xA;*Caso5: nombre CI Contrato contiene &quot;de op&quot; (es rescision)&#xA;*Caso6: nombre CI Contrato contiene PNT&#xD;&#xA;" Condition="[in_nombreClContrato.ToLower.Contains(&quot;mod. &quot;) Or in_nombreClContrato.ToLower.Contains(&quot;rescisi&quot;) Or in_nombreClContrato.ToLower.Contains(&quot;baulera&quot;)  Or in_nombreClContrato.ToLower.Contains(&quot;of-cont.&quot;)  Or in_nombreClContrato.ToLower.Contains(&quot;publici&quot;) Or in_nombreClContrato.Contains(&quot;PNT&quot;)]" DisplayName="If Casos actualmente fuera del alcance del bot" sap:VirtualizedContainerService.HintSize="659,457" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -118,6 +118,27 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="659,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;La variable observaciones ahora es:&quot;  + out_observaciones]" />
+    <If Condition="[out_observaciones = &quot;&quot; AndAlso ((Cint(in_columnaAparece)) &gt; 1 )]" DisplayName="If  columna aparece(creada por bot) es mayor a 1. (Se repite el nro oferta) " sap:VirtualizedContainerService.HintSize="659,267" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <Assign DisplayName="Assign - oferta repetida" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_7">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_observaciones]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">Nro de oferta repetido</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Then>
+      <If.Else>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:LogMessage DisplayName="Log Message - nueva var obs" sap:VirtualizedContainerService.HintSize="659,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;La variable observaciones ahora es:&quot;  + out_observaciones]" />
   </Sequence>
 </Activity>

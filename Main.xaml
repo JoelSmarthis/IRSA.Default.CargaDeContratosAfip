@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1159,1505</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1249,1505</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>State_Machine_Template_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -118,7 +118,7 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <State x:Name="__ReferenceID6" sap2010:Annotation.AnnotationText="-&gt; Kill processes involved in the automation to clear environment;&#xA;-&gt; Start Streaming Server;&#xA;-&gt; Delete temporary files.&#xA;-&gt; Download config file from Storage Bucket;&#xA;-&gt; Create dictionary from JSON config file;&#xA;-&gt; Initialize variables used in the automation." DisplayName="Initialize Environment" sap:VirtualizedContainerService.HintSize="564,3095" sap2010:WorkflowViewState.IdRef="State_1">
+    <State x:Name="__ReferenceID6" sap2010:Annotation.AnnotationText="-&gt; Kill processes involved in the automation to clear environment;&#xA;-&gt; Start Streaming Server;&#xA;-&gt; Delete temporary files.&#xA;-&gt; Download config file from Storage Bucket;&#xA;-&gt; Create dictionary from JSON config file;&#xA;-&gt; Initialize variables used in the automation." DisplayName="Initialize Environment" sap:VirtualizedContainerService.HintSize="265,233" sap2010:WorkflowViewState.IdRef="State_1">
       <State.Entry>
         <TryCatch DisplayName="Try to init all settings" sap:VirtualizedContainerService.HintSize="518,2596" sap2010:WorkflowViewState.IdRef="TryCatch_1">
           <TryCatch.Try>
@@ -926,9 +926,9 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <Transition.To>
-                                    <State x:Name="__ReferenceID5" sap2010:Annotation.AnnotationText="-&gt; Process the current transaction item." DisplayName="Process" sap:VirtualizedContainerService.HintSize="610,1216" sap2010:WorkflowViewState.IdRef="State_5">
+                                    <State x:Name="__ReferenceID5" sap2010:Annotation.AnnotationText="-&gt; Process the current transaction item." DisplayName="Process" sap:VirtualizedContainerService.HintSize="610,1296" sap2010:WorkflowViewState.IdRef="State_5">
                                       <State.Entry>
-                                        <TryCatch DisplayName="Try process" sap:VirtualizedContainerService.HintSize="564,761" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                                        <TryCatch DisplayName="Try process" sap:VirtualizedContainerService.HintSize="564,801" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                                           <TryCatch.Try>
                                             <Sequence DisplayName="PROCESS - CARGAR DATOS" sap:VirtualizedContainerService.HintSize="526,502" sap2010:WorkflowViewState.IdRef="Sequence_20">
                                               <sap:WorkflowViewStateService.ViewState>
@@ -957,7 +957,7 @@
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
                                                 <If.Else>
-                                                  <Assign sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_20">
+                                                  <Assign DisplayName="Assign - cuit anterior" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_20">
                                                     <Assign.To>
                                                       <OutArgument x:TypeArguments="x:String">[cuitRepresentarAnterior]</OutArgument>
                                                     </Assign.To>

@@ -16,7 +16,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>718,11172</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>718,10678</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="33">
@@ -88,7 +88,6 @@
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -96,7 +95,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="728,11067" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="728,10613" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:Browser" Name="afipBrowser" />
       <Variable x:TypeArguments="x:String" Name="sociedad" />
@@ -125,7 +124,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="686,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <Assign sap:VirtualizedContainerService.HintSize="686,70" sap2010:WorkflowViewState.IdRef="Assign_28">
+    <Assign DisplayName="Assign aparece" sap:VirtualizedContainerService.HintSize="686,70" sap2010:WorkflowViewState.IdRef="Assign_28">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[aparece]</OutArgument>
       </Assign.To>
@@ -182,10 +181,10 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[observaciones = &quot;&quot;]" DisplayName="Check sesion - si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,61" sap2010:WorkflowViewState.IdRef="If_13">
+    <If Condition="[observaciones = &quot;&quot;]" DisplayName="Check sesion - si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,1709" sap2010:WorkflowViewState.IdRef="If_13">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -572,7 +571,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[observaciones = &quot;&quot;]" DisplayName="Completar datos del locador/propietario - si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,1194" sap2010:WorkflowViewState.IdRef="If_5">
+    <If Condition="[observaciones = &quot;&quot;]" DisplayName="Completar datos del locador/propietario - si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,556" sap2010:WorkflowViewState.IdRef="If_5">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -580,9 +579,9 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <TryCatch DisplayName="Try Catch - CompletarLocadorPropietario" sap:VirtualizedContainerService.HintSize="438,997" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+        <TryCatch DisplayName="Try Catch - CompletarLocadorPropietario" sap:VirtualizedContainerService.HintSize="438,359" sap2010:WorkflowViewState.IdRef="TryCatch_5">
           <TryCatch.Try>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CompletarLocadorPropietario.xaml" sap:VirtualizedContainerService.HintSize="334,123" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\CargaEnAfip\CompletarLocadorPropietario.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CompletarLocadorPropietario.xaml" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\CargaEnAfip\CompletarLocadorPropietario.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:String" x:Key="in_codigoPostal">[codigoPostal]</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="in_cuitTitular">[cuitTitular]</InArgument>
@@ -590,7 +589,7 @@
             </ui:InvokeWorkflowFile>
           </TryCatch.Try>
           <TryCatch.Catches>
-            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,658" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_5">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -607,7 +606,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message - detalle del error" sap:VirtualizedContainerService.HintSize="334,103" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Warn" Message="[String.Format(&quot;Error en 'CompletarLocadorPropietario.xaml': {0}&quot;, exception.Message)]" />
+                  <ui:LogMessage DisplayName="Log Message - detalle del error" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Warn" Message="[String.Format(&quot;Error en 'CompletarLocadorPropietario.xaml': {0}&quot;, exception.Message)]" />
                   <Assign DisplayName="Assign - observaciones error gen" sap:VirtualizedContainerService.HintSize="334,70" sap2010:WorkflowViewState.IdRef="Assign_10">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[observaciones]</OutArgument>
@@ -624,7 +623,7 @@
                       <InArgument x:TypeArguments="x:Int32">[io_contratosConError + 1]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,123" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="02-Framework\TakeScreenshot.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="02-Framework\TakeScreenshot.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_folder">[Path.Combine(DirectCast(in_config("exScreenshotsFolderPath"), String), in_config("projectName").ToString)]</InArgument>
                       <InOutArgument x:TypeArguments="x:String" x:Key="io_filePath" />
@@ -651,7 +650,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[observaciones = &quot;&quot;]" DisplayName="Completar datos del INQUILINO - si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,1034" sap2010:WorkflowViewState.IdRef="If_6">
+    <If Condition="[observaciones = &quot;&quot;]" DisplayName="Completar datos del INQUILINO - si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,556" sap2010:WorkflowViewState.IdRef="If_6">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -659,16 +658,16 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <TryCatch DisplayName="Try Catch - CargaDatosInquilino" sap:VirtualizedContainerService.HintSize="434,834" sap2010:WorkflowViewState.IdRef="TryCatch_6">
+        <TryCatch DisplayName="Try Catch - CargaDatosInquilino" sap:VirtualizedContainerService.HintSize="438,359" sap2010:WorkflowViewState.IdRef="TryCatch_6">
           <TryCatch.Try>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CargaDatosInquilino.xaml" sap:VirtualizedContainerService.HintSize="334,123" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\CargaEnAfip\CargaDatosInquilino.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CargaDatosInquilino.xaml" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\CargaEnAfip\CargaDatosInquilino.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:String" x:Key="in_cuitInquilino">[in_dtLineaActual.Rows(0).Item("CUIT Locatario").ToString]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
           </TryCatch.Try>
           <TryCatch.Catches>
-            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,658" sap2010:WorkflowViewState.IdRef="Catch`1_6">
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_6">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -686,7 +685,7 @@
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message - detalle del error" sap:VirtualizedContainerService.HintSize="334,103" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Warn" Message="[String.Format(&quot;Error en 'CargaDatosInquilino.xaml': {0}&quot;, exception.Message)]" />
+                  <ui:LogMessage DisplayName="Log Message - detalle del error" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Warn" Message="[String.Format(&quot;Error en 'CargaDatosInquilino.xaml': {0}&quot;, exception.Message)]" />
                   <Assign DisplayName="Assign - observaciones error gen" sap:VirtualizedContainerService.HintSize="334,70" sap2010:WorkflowViewState.IdRef="Assign_11">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[observaciones]</OutArgument>
@@ -703,7 +702,7 @@
                       <InArgument x:TypeArguments="x:Int32">[io_contratosConError + 1]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,123" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="02-Framework\TakeScreenshot.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="02-Framework\TakeScreenshot.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_folder">[Path.Combine(DirectCast(in_config("exScreenshotsFolderPath"), String), in_config("projectName").ToString)]</InArgument>
                       <InOutArgument x:TypeArguments="x:String" x:Key="io_filePath" />
@@ -738,7 +737,7 @@
         <InArgument x:TypeArguments="x:String">[in_dtLineaActual.Rows(0).Item("Unidad").ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:Matches DisplayName="Find Matching Patterns" FirstMatch="[unidadLocal]" sap:VirtualizedContainerService.HintSize="686,62" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[strUnidad]" IsBuilderTabModified="False" Pattern="(?&lt;=^\d+/\d+/)\S+(?=$)" RegexOption="Multiline, Compiled">
+    <ui:Matches DisplayName="Find Matching Patterns" FirstMatch="[unidadLocal]" sap:VirtualizedContainerService.HintSize="686,61" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[strUnidad]" IsBuilderTabModified="False" Pattern="(?&lt;=^\d+/\d+/)\S+(?=$)" RegexOption="Multiline, Compiled">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -746,7 +745,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:Matches>
-    <If Condition="[observaciones = &quot;&quot;]" DisplayName="Completar datos INMUEBLE - si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,1034" sap2010:WorkflowViewState.IdRef="If_7">
+    <If Condition="[observaciones = &quot;&quot;]" DisplayName="Completar datos INMUEBLE - si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,556" sap2010:WorkflowViewState.IdRef="If_7">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -754,7 +753,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <TryCatch DisplayName="Try Catch - CargaDatosInmueble" sap:VirtualizedContainerService.HintSize="434,834" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+        <TryCatch DisplayName="Try Catch - CargaDatosInmueble" sap:VirtualizedContainerService.HintSize="438,359" sap2010:WorkflowViewState.IdRef="TryCatch_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -762,7 +761,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <TryCatch.Try>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CargaDatosInmueble.xaml" sap:VirtualizedContainerService.HintSize="334,123" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\CargaEnAfip\CargaDatosInmueble.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CargaDatosInmueble.xaml" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\CargaEnAfip\CargaDatosInmueble.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:String" x:Key="in_unidadLocal">[unidadLocal]</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="in_direccionCalle">[direccionCalle]</InArgument>
@@ -777,7 +776,7 @@
             </ui:InvokeWorkflowFile>
           </TryCatch.Try>
           <TryCatch.Catches>
-            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,658" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -794,7 +793,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message - detalle del error" sap:VirtualizedContainerService.HintSize="334,103" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Warn" Message="[String.Format(&quot;Error en 'CargaDatosInmueble.xaml': {0}&quot;, exception.Message)]" />
+                  <ui:LogMessage DisplayName="Log Message - detalle del error" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Warn" Message="[String.Format(&quot;Error en 'CargaDatosInmueble.xaml': {0}&quot;, exception.Message)]" />
                   <Assign DisplayName="Assign - observaciones error gen" sap:VirtualizedContainerService.HintSize="334,70" sap2010:WorkflowViewState.IdRef="Assign_9">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[observaciones]</OutArgument>
@@ -811,7 +810,7 @@
                       <InArgument x:TypeArguments="x:Int32">[io_contratosConError + 1]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,123" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="02-Framework\TakeScreenshot.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="02-Framework\TakeScreenshot.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_folder">[Path.Combine(DirectCast(in_config("exScreenshotsFolderPath"), String), in_config("projectName").ToString)]</InArgument>
                       <InOutArgument x:TypeArguments="x:String" x:Key="io_filePath" />
@@ -838,7 +837,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[observaciones = &quot;&quot;]" DisplayName="DATOS CONTRATO: vma, medio de pago, pdf - si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,1034" sap2010:WorkflowViewState.IdRef="If_8">
+    <If Condition="[observaciones = &quot;&quot;]" DisplayName="DATOS CONTRATO: vma, medio de pago, pdf - si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,556" sap2010:WorkflowViewState.IdRef="If_8">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -846,7 +845,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <TryCatch DisplayName="Try Catch - CargaDatosContrato" sap:VirtualizedContainerService.HintSize="434,834" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+        <TryCatch DisplayName="Try Catch - CargaDatosContrato" sap:VirtualizedContainerService.HintSize="438,359" sap2010:WorkflowViewState.IdRef="TryCatch_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -854,7 +853,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <TryCatch.Try>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CargaDatosContrato.xaml" sap:VirtualizedContainerService.HintSize="334,123" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\CargaEnAfip\CargaDatosContrato.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CargaDatosContrato.xaml" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\CargaEnAfip\CargaDatosContrato.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:String" x:Key="in_inicioContrato">[in_dtLineaActual.Rows(0).Item("Inicio Contrato").ToString]</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="in_finContrato">[in_dtLineaActual.Rows(0).Item("Fin Contrato").ToString]</InArgument>
@@ -867,7 +866,7 @@
             </ui:InvokeWorkflowFile>
           </TryCatch.Try>
           <TryCatch.Catches>
-            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,658" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -884,7 +883,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message - detalle del error" sap:VirtualizedContainerService.HintSize="334,103" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[String.Format(&quot;Error en 'CargaDatosContrato.xaml': {0}&quot;, exception.Message)]" />
+                  <ui:LogMessage DisplayName="Log Message - detalle del error" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[String.Format(&quot;Error en 'CargaDatosContrato.xaml': {0}&quot;, exception.Message)]" />
                   <Assign DisplayName="Assign - observaciones error gen" sap:VirtualizedContainerService.HintSize="334,70" sap2010:WorkflowViewState.IdRef="Assign_8">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[observaciones]</OutArgument>
@@ -901,7 +900,7 @@
                       <InArgument x:TypeArguments="x:Int32">[io_contratosConError + 1]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,123" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="02-Framework\TakeScreenshot.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="02-Framework\TakeScreenshot.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_folder">[Path.Combine(DirectCast(in_config("exScreenshotsFolderPath"), String), in_config("projectName").ToString)]</InArgument>
                       <InOutArgument x:TypeArguments="x:String" x:Key="io_filePath" />
@@ -928,7 +927,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[observaciones = &quot;&quot;]" DisplayName="Verificar datos colocados - si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,751" sap2010:WorkflowViewState.IdRef="If_9">
+    <If Condition="[observaciones = &quot;&quot;]" DisplayName="Verificar datos colocados - si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,740" sap2010:WorkflowViewState.IdRef="If_9">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -936,12 +935,12 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,551" sap2010:WorkflowViewState.IdRef="TryCatch_7">
+        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,543" sap2010:WorkflowViewState.IdRef="TryCatch_7">
           <TryCatch.Try>
-            <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="376,309" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="2" RetryInterval="00:00:04">
+            <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="376,306" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="2" RetryInterval="00:00:04">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="VerificarYCargarDatos.xaml" sap:VirtualizedContainerService.HintSize="334,123" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\CargaEnAfip\VerificarYCargarDatos.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="VerificarYCargarDatos.xaml" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\CargaEnAfip\VerificarYCargarDatos.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <OutArgument x:TypeArguments="x:String" x:Key="out_observaciones">[observaciones]</OutArgument>
                       <InOutArgument x:TypeArguments="x:Int32" x:Key="io_contratosCargados">[io_contratosCargados]</InOutArgument>
@@ -955,7 +954,7 @@
             </ui:RetryScope>
           </TryCatch.Try>
           <TryCatch.Catches>
-            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,22" sap2010:WorkflowViewState.IdRef="Catch`1_7">
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_7">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -972,7 +971,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message - detalle del error" sap:VirtualizedContainerService.HintSize="334,103" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Warn" Message="[String.Format(&quot;Error en 'VerificarYCargarDatos.xaml': {0}&quot;, exception.Message)]" />
+                  <ui:LogMessage DisplayName="Log Message - detalle del error" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Warn" Message="[String.Format(&quot;Error en 'VerificarYCargarDatos.xaml': {0}&quot;, exception.Message)]" />
                   <Assign DisplayName="Assign - observaciones error gen" sap:VirtualizedContainerService.HintSize="334,70" sap2010:WorkflowViewState.IdRef="Assign_34">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[observaciones]</OutArgument>
@@ -989,7 +988,7 @@
                       <InArgument x:TypeArguments="x:Int32">[io_contratosConError + 1]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,123" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="02-Framework\TakeScreenshot.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="02-Framework\TakeScreenshot.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_folder">[Path.Combine(DirectCast(in_config("exScreenshotsFolderPath"), String), in_config("projectName").ToString)]</InArgument>
                       <InOutArgument x:TypeArguments="x:String" x:Key="io_filePath" />
@@ -1007,7 +1006,7 @@
         </TryCatch>
       </If.Then>
     </If>
-    <If Condition="[observaciones = &quot;&quot;]" DisplayName="Mover contrato PDF - si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,323" sap2010:WorkflowViewState.IdRef="If_15">
+    <If Condition="[observaciones = &quot;&quot;]" DisplayName="Mover contrato PDF - si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,319" sap2010:WorkflowViewState.IdRef="If_15">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1015,7 +1014,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="MoverContratoPdfActual.xaml" sap:VirtualizedContainerService.HintSize="334,123" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\MoverContratoPdfActual.xaml">
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="MoverContratoPdfActual.xaml" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\MoverContratoPdfActual.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="x:String" x:Key="in_currentContratoPath">[in_currentContratoPath]</InArgument>
             <InArgument x:TypeArguments="x:String" x:Key="in_externalFolderPath">[DirectCast(in_config("externalFolderPath"), String)]</InArgument>
@@ -1032,9 +1031,9 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[observaciones = &quot;&quot;]" DisplayName="Descargar comprobante - si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,323" sap2010:WorkflowViewState.IdRef="If_11">
+    <If Condition="[observaciones = &quot;&quot;]" DisplayName="Descargar comprobante - si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,319" sap2010:WorkflowViewState.IdRef="If_11">
       <If.Then>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="DescargarComprobante.xaml" sap:VirtualizedContainerService.HintSize="334,123" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\CargaEnAfip\DescargarComprobante.xaml">
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="DescargarComprobante.xaml" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\CargaEnAfip\DescargarComprobante.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="x:String" x:Key="in_comprobantesFolderPath">[String.Format("{0}\Comprobantes", DirectCast(in_config("outputFolderPath"), String))]</InArgument>
             <InArgument x:TypeArguments="x:String" x:Key="in_nroOrden">[in_dtLineaActual.Rows(0).Item(0).ToString]</InArgument>
@@ -1054,7 +1053,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[observaciones= &quot;&quot;]" DisplayName="Extraer nro Comprobante - si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,323" sap2010:WorkflowViewState.IdRef="If_10">
+    <If Condition="[observaciones= &quot;&quot;]" DisplayName="Extraer nro Comprobante - si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,319" sap2010:WorkflowViewState.IdRef="If_10">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1062,7 +1061,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ExtraerDatoComprobante.xaml" sap:VirtualizedContainerService.HintSize="334,123" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\CargaEnAfip\ExtraerDatoComprobante.xaml">
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ExtraerDatoComprobante.xaml" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\CargaEnAfip\ExtraerDatoComprobante.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="x:String" x:Key="in_currentComprobantePath">[currentComprobantePath]</InArgument>
             <OutArgument x:TypeArguments="x:String" x:Key="out_numeroComprobante">[observaciones]</OutArgument>
@@ -1081,7 +1080,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[(not observaciones.Equals(&quot;&quot;)) AND (not observaciones.ToLower.Contains(&quot;pdf&quot;)) AND (not observaciones.ToLower.Contains(&quot;fuera &quot;))]" DisplayName="Volver Reli ontribuyente- si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,293" sap2010:WorkflowViewState.IdRef="If_16">
+    <If Condition="[(not observaciones.Equals(&quot;&quot;)) AND (not observaciones.ToLower.Contains(&quot;pdf&quot;)) AND (not observaciones.ToLower.Contains(&quot;fuera &quot;))]" DisplayName="Volver Reli ontribuyente- si no hay observaciones" sap:VirtualizedContainerService.HintSize="686,290" sap2010:WorkflowViewState.IdRef="If_16">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1089,7 +1088,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="True" DisplayName="02-Framework\InternalProcesses\VolverReli.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,123" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\VolverReli.xaml">
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="True" DisplayName="02-Framework\InternalProcesses\VolverReli.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\VolverReli.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="x:String" x:Key="in_cuitRepresentar">[cuitRepresentar]</InArgument>
             <OutArgument x:TypeArguments="x:String" x:Key="out_cuitRepresentarActual">[out_cuitRepresentarActual]</OutArgument>
@@ -1109,7 +1108,7 @@
         </Assign>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message -  fin del processing" sap:VirtualizedContainerService.HintSize="686,103" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Se terminó el processing del contrato actual&quot;]">
+    <ui:LogMessage DisplayName="Log Message -  fin del processing" sap:VirtualizedContainerService.HintSize="686,101" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Se terminó el processing del contrato actual&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
@@ -1140,7 +1139,7 @@
         <InArgument x:TypeArguments="x:Object">[fechaDeCarga]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[aparece &gt; 1]" DisplayName="If linea reporte aparece mas de una vez" sap:VirtualizedContainerService.HintSize="686,62" sap2010:WorkflowViewState.IdRef="If_18">
+    <If Condition="[aparece &gt; 1]" DisplayName="If linea reporte aparece mas de una vez" sap:VirtualizedContainerService.HintSize="686,61" sap2010:WorkflowViewState.IdRef="If_18">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
