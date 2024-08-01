@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="DataTableToHtml" this:DataTableToHtml.in_styleCss="table {border-collapse: collapse; border-style: double; border-color: #005f6b; width: 70%; background-color: white;} th, td {border: 1px solid #005f6b; border-collapse: collapse; padding: 12px; font-size: 12px; text-align: left;} th.width20, td.width20 {width: 20%;} th.width25, td.width25 {width: 25%;} td.numberCell {width: 5%;}" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:st="clr-namespace:System.Text;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="DataTableToHtml" this:DataTableToHtml.in_styleCss="table {border-collapse: collapse; border-style: double; border-color: #005f6b; width: 70%; background-color: white;} th, td {border: 1px solid #005f6b; border-collapse: collapse; padding: 12px; font-size: 12px; text-align: left;} th.width20, td.width20 {width: 20%;} th.width25, td.width25 {width: 25%;} td.numberCell {width: 5%;}" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_styleCss" Type="InArgument(x:String)" />
     <x:Property Name="in_contratosCargados" Type="InArgument(x:String)" />
@@ -46,7 +46,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1243,4379</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1249,827</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DataTableToHtml_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="58">
@@ -124,318 +124,51 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Html" sap:VirtualizedContainerService.HintSize="349,4234" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Html" sap:VirtualizedContainerService.HintSize="376,276" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="CreateSummaryTableHtml" sap:VirtualizedContainerService.HintSize="307,4132" sap2010:WorkflowViewState.IdRef="Sequence_8">
-      <Sequence.Variables>
-        <Variable x:TypeArguments="st:StringBuilder" Name="builder" />
-      </Sequence.Variables>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <Assign DisplayName="Set string builder" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_1">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[new StringBuilder]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append style " sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_11">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[If(string.IsNullOrWhiteSpace(in_styleCss), builder, builder.Append(string.Format("&lt;style&gt;{0}&lt;/style&gt;", in_styleCss)))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table start" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_2">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append("&lt;table&gt;")]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row start" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_47">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append("&lt;tr&gt;")]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_48">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append(string.Format("&lt;td class=""width20"" rowspan=""2"" style=""font-weight: bold;""&gt;Reporte Semanal {0}&lt;/td&gt;", HttpUtility.HtmlEncode(now.ToString("dd/MM/yyyy"))))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_49">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append(string.Format("&lt;td class=""width25""&gt;{0}&lt;/td&gt;", HttpUtility.HtmlEncode("Contratos Firmados Durante el periodo")))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_50">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append(string.Format("&lt;td class=""numberCell""&gt;{0}&lt;/td&gt;", HttpUtility.HtmlEncode(in_contratosFirmadosSemana)))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_51">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append(string.Format("&lt;td class=""width25""&gt;{0}&lt;/td&gt;", HttpUtility.HtmlEncode("Contratos Cargados por el robot (*)")))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_52">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append(string.Format("&lt;td class=""numberCell"" style=""color: green; font-weight: bold;""&gt;{0}&lt;/td&gt;", HttpUtility.HtmlEncode(in_contratosCargados)))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="-------Append table row end-------" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_53">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append("&lt;/tr&gt;")]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="-------Append table row start-------" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_54">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append("&lt;tr&gt;")]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_55">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append(string.Format("&lt;td class=""width25"" style=""color: orange; font-weight: bold;""&gt;{0}&lt;/td&gt;", HttpUtility.HtmlEncode("No se encontró el .PDF")))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_56">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append(string.Format("&lt;td class=""numberCell"" style=""color: orange; font-weight: bold;""&gt;{0}&lt;/td&gt;", HttpUtility.HtmlEncode(in_semanalNoSeEncontro)))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_57">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append(string.Format("&lt;td class=""width25"" style=""color: red; font-weight: bold;""&gt;{0}&lt;/td&gt;", HttpUtility.HtmlEncode("Quedaron Fuera de Alcance, Requiere carga manual")))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_58">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append(string.Format("&lt;td class=""numberCell"" style=""color: red; font-weight: bold;""&gt;{0}&lt;/td&gt;", HttpUtility.HtmlEncode(in_semanalFueraDeAlcance)))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="-------Append table row end-------" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_59">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append("&lt;/tr&gt;")]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="###Append table end" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_60">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append("&lt;/table&gt;&lt;/br&gt;")]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="texto informativo" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_78">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append("&lt;b style=""font-size:11px;""&gt;(*) Los contratos cargados por el BOT pueden ser de periodos anteriores&lt;/b&gt;")]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table start####" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_61">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append("&lt;table&gt;")]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="-------Append table row start-------" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_62">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append("&lt;tr&gt;")]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_63">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append(string.Format("&lt;td class=""width20"" rowspan=""3"" style=""font-weight: bold;""&gt;Reporte Mes: {0}&lt;/td&gt;", HttpUtility.HtmlEncode(in_mesActualEspanol)))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_64">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder" xml:space="preserve">[builder.Append(string.Format("&lt;td colspan=""4""&gt;Total Contratos Firmados Durante el Periodo  {0}&lt;/td&gt;", HttpUtility.HtmlEncode(in_contratosFirmadosMes)))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="-------Append table row end-------" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_65">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append("&lt;/tr&gt;")]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="-------Append table row start-------" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_66">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append("&lt;tr&gt;")]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_67">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append(string.Format(" &lt;td class=""width25"" style=""color: orange; font-weight: bold;""&gt;{0}&lt;/td&gt;", HttpUtility.HtmlEncode("No se encontró el .PDF")))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_68">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append(string.Format(" &lt;td class=""numberCell"" style=""color: orange; font-weight: bold;""&gt;{0}&lt;/td&gt;", HttpUtility.HtmlEncode(in_totalNoSeEncontro)))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_69">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append(string.Format(" &lt;td class=""width25"" style=""color: red; font-weight: bold;""&gt;{0}&lt;/td&gt;", HttpUtility.HtmlEncode("Quedaron Fuera de Alcance, Requiere carga manual")))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_70">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append(string.Format(" &lt;td class=""numberCell"" style=""color: red; font-weight: bold;""&gt;{0}&lt;/td&gt;", HttpUtility.HtmlEncode(in_totalFueraDeAlcance)))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="-------Append table row end-------" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_71">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append("&lt;/tr&gt;")]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="-------Append table row start-------" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_72">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append("&lt;tr&gt;")]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_73">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append(string.Format(" &lt;td class=""width25"" style=""color: lightseagreen; font-weight: bold;""&gt;{0}&lt;/td&gt;", HttpUtility.HtmlEncode("Cargados Manualmente por el Backoffice")))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_74">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append(string.Format(" &lt;td class=""numberCell"" style=""color: lightseagreen; font-weight: bold;""&gt;{0}&lt;/td&gt;", HttpUtility.HtmlEncode(in_totalCargadosPorUsers)))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_75">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append(string.Format("&lt;td class=""width25"" style=""color: green; font-weight: bold;""&gt;{0}&lt;/td&gt;", HttpUtility.HtmlEncode("Total Contratos Cargados por el robot")))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table row" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_76">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append(string.Format("&lt;td class=""numberCell"" style=""color: green; font-weight: bold;""&gt;{0}&lt;/td&gt;", HttpUtility.HtmlEncode(in_totalCargadosPorBot)))]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="------Append table row end------" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_77">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append("&lt;/tr&gt;")]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Append table end" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_3">
-        <Assign.To>
-          <OutArgument x:TypeArguments="st:StringBuilder">[builder]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="st:StringBuilder">[builder.Append("&lt;/table&gt;")]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign DisplayName="Set output" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_10">
-        <Assign.To>
-          <OutArgument x:TypeArguments="x:String">[out_reportesHtml]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="x:String">[builder.ToString]</InArgument>
-        </Assign.Value>
-      </Assign>
-    </Sequence>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim builder As New StringBuilder&#xD;&#xA;&#xD;&#xA;builder.Append(String.Format(&quot;&lt;style&gt;{0}&lt;/style&gt;&quot;, in_styleCss))&#xD;&#xA;builder.Append(&quot;&lt;table&gt;&quot;)&#xD;&#xA;builder.Append(&quot;&lt;tr&gt;&quot;)&#xD;&#xA;builder.Append(string.Format(&quot;&lt;td class=&quot;&quot;width20&quot;&quot; rowspan=&quot;&quot;2&quot;&quot; style=&quot;&quot;font-weight: bold;&quot;&quot;&gt;Reporte Semanal {0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(now.ToString(&quot;dd/MM/yyyy&quot;))))&#xD;&#xA;builder.Append(string.Format(&quot;&lt;td class=&quot;&quot;width25&quot;&quot;&gt;{0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(&quot;Contratos Firmados Durante el periodo&quot;)))&#xD;&#xA;builder.Append(string.Format(&quot;&lt;td class=&quot;&quot;numberCell&quot;&quot;&gt;{0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(in_contratosFirmadosSemana)))&#xD;&#xA;builder.Append(string.Format(&quot;&lt;td class=&quot;&quot;width25&quot;&quot;&gt;{0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(&quot;Contratos Cargados por el robot (*)&quot;)))&#xD;&#xA;builder.Append(string.Format(&quot;&lt;td class=&quot;&quot;numberCell&quot;&quot; style=&quot;&quot;color: green; font-weight: bold;&quot;&quot;&gt;{0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(in_contratosCargados)))&#xD;&#xA;builder.Append(&quot;&lt;/tr&gt;&quot;)&#xD;&#xA;builder.Append(&quot;&lt;tr&gt;&quot;)&#xD;&#xA;builder.Append(string.Format(&quot;&lt;td class=&quot;&quot;width25&quot;&quot; style=&quot;&quot;color: orange; font-weight: bold;&quot;&quot;&gt;{0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(&quot;No se encontró el .PDF&quot;)))&#xD;&#xA;builder.Append(string.Format(&quot;&lt;td class=&quot;&quot;numberCell&quot;&quot; style=&quot;&quot;color: orange; font-weight: bold;&quot;&quot;&gt;{0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(in_semanalNoSeEncontro)))&#xD;&#xA;builder.Append(string.Format(&quot;&lt;td class=&quot;&quot;width25&quot;&quot; style=&quot;&quot;color: red; font-weight: bold;&quot;&quot;&gt;{0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(&quot;Quedaron Fuera de Alcance, Requiere carga manual&quot;)))&#xD;&#xA;builder.Append(string.Format(&quot;&lt;td class=&quot;&quot;numberCell&quot;&quot; style=&quot;&quot;color: red; font-weight: bold;&quot;&quot;&gt;{0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(in_semanalFueraDeAlcance)))&#xD;&#xA;builder.Append(&quot;&lt;/tr&gt;&quot;)&#xD;&#xA;builder.Append(&quot;&lt;/table&gt;&lt;/br&gt;&quot;)&#xD;&#xA;builder.Append(&quot;&lt;b style=&quot;&quot;font-size:11px;&quot;&quot;&gt;(*) Los contratos cargados por el BOT pueden ser de periodos anteriores&lt;/b&gt;&quot;)&#xD;&#xA;builder.Append(&quot;&lt;table&gt;&quot;)&#xD;&#xA;builder.Append(&quot;&lt;tr&gt;&quot;)&#xD;&#xA;builder.Append(string.Format(&quot;&lt;td class=&quot;&quot;width20&quot;&quot; rowspan=&quot;&quot;3&quot;&quot; style=&quot;&quot;font-weight: bold;&quot;&quot;&gt;Reporte Mes: {0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(in_mesActualEspanol)))&#xD;&#xA;builder.Append(string.Format(&quot;&lt;td colspan=&quot;&quot;4&quot;&quot;&gt;Total Contratos Firmados Durante el Periodo  {0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(in_contratosFirmadosMes)))&#xD;&#xA;builder.Append(&quot;&lt;/tr&gt;&quot;)&#xD;&#xA;builder.Append(&quot;&lt;tr&gt;&quot;)&#xD;&#xA;builder.Append(string.Format(&quot; &lt;td class=&quot;&quot;width25&quot;&quot; style=&quot;&quot;color: orange; font-weight: bold;&quot;&quot;&gt;{0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(&quot;No se encontró el .PDF&quot;)))&#xD;&#xA;builder.Append(string.Format(&quot; &lt;td class=&quot;&quot;numberCell&quot;&quot; style=&quot;&quot;color: orange; font-weight: bold;&quot;&quot;&gt;{0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(in_totalNoSeEncontro)))&#xD;&#xA;builder.Append(string.Format(&quot; &lt;td class=&quot;&quot;width25&quot;&quot; style=&quot;&quot;color: red; font-weight: bold;&quot;&quot;&gt;{0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(&quot;Quedaron Fuera de Alcance, Requiere carga manual&quot;)))&#xD;&#xA;builder.Append(string.Format(&quot; &lt;td class=&quot;&quot;numberCell&quot;&quot; style=&quot;&quot;color: red; font-weight: bold;&quot;&quot;&gt;{0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(in_totalFueraDeAlcance)))&#xD;&#xA;builder.Append(&quot;&lt;/tr&gt;&quot;)&#xD;&#xA;builder.Append(&quot;&lt;tr&gt;&quot;)&#xD;&#xA;builder.Append(string.Format(&quot; &lt;td class=&quot;&quot;width25&quot;&quot; style=&quot;&quot;color: lightseagreen; font-weight: bold;&quot;&quot;&gt;{0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(&quot;Cargados Manualmente por el Backoffice&quot;)))&#xD;&#xA;builder.Append(string.Format(&quot; &lt;td class=&quot;&quot;numberCell&quot;&quot; style=&quot;&quot;color: lightseagreen; font-weight: bold;&quot;&quot;&gt;{0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(in_totalCargadosPorUsers)))&#xD;&#xA;builder.Append(string.Format(&quot;&lt;td class=&quot;&quot;width25&quot;&quot; style=&quot;&quot;color: green; font-weight: bold;&quot;&quot;&gt;{0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(&quot;Total Contratos Cargados por el robot&quot;)))&#xD;&#xA;builder.Append(string.Format(&quot;&lt;td class=&quot;&quot;numberCell&quot;&quot; style=&quot;&quot;color: green; font-weight: bold;&quot;&quot;&gt;{0}&lt;/td&gt;&quot;, HttpUtility.HtmlEncode(in_totalCargadosPorBot)))&#xD;&#xA;builder.Append(&quot;&lt;/tr&gt;&quot;)&#xD;&#xA;builder.Append(&quot;&lt;/table&gt;&quot;)&#xD;&#xA;&#xD;&#xA;out_htmlText = builder.ToString&#xD;&#xA;" DisplayName="Invoke Code -  create users table" sap:VirtualizedContainerService.HintSize="334,174" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_styleCss">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_styleCss" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_contratosCargados">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_contratosCargados" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_mesActualEspanol">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_mesActualEspanol" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_contratosFirmadosSemana">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_contratosFirmadosSemana" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_semanalNoSeEncontro">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_semanalNoSeEncontro" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_semanalFueraDeAlcance">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_semanalFueraDeAlcance" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_contratosFirmadosMes">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_contratosFirmadosMes" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_totalNoSeEncontro">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_totalNoSeEncontro" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_totalCargadosPorUsers">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_totalCargadosPorUsers" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_totalCargadosPorBot">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_totalCargadosPorBot" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_htmlText">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_reportesHtml" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_totalFueraDeAlcance">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_totalFueraDeAlcance" />
+        </InArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
   </Sequence>
 </Activity>

@@ -2,6 +2,7 @@
   <x:Members>
     <x:Property Name="in_dtReportStatus" Type="InArgument(sd:DataTable)" />
     <x:Property Name="out_dtReporteActualizado" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_boolTieneError" Type="OutArgument(x:Boolean)" />
   </x:Members>
   <this:ConsolidacionReporte.in_dtReportStatus>
     <InArgument x:TypeArguments="sd:DataTable" />
@@ -9,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>736,2946</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1249,3562</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ConsolidacionReporte_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="33">
@@ -83,7 +84,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ConsolidacionReporte" sap:VirtualizedContainerService.HintSize="480,2881" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ConsolidacionReporte" sap:VirtualizedContainerService.HintSize="693,3497" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="currentMonthExcelReport" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtReporteAnterior" />
@@ -96,7 +97,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:FilterDataTable Filters="{x:Null}" SelectColumns="{x:Null}" sap2010:Annotation.AnnotationText="Copiamos la tabla dtReportStatus, ya que vamos a modificar la copia, puesto que el tipo de dato {DataTable} es &quot;mutable&quot;.&#xA;La copia la llamamos dtReportStatus." DataTable="[in_dtReportStatus]" DisplayName="Filter Data Table - to copy datatable" sap:VirtualizedContainerService.HintSize="438,133" sap2010:WorkflowViewState.IdRef="FilterDataTable_7" OutputDataTable="[dtReportStatus]" SelectColumnsMode="Remove">
+    <ui:FilterDataTable Filters="{x:Null}" SelectColumns="{x:Null}" sap2010:Annotation.AnnotationText="Copiamos la tabla dtReportStatus, ya que vamos a modificar la copia, puesto que el tipo de dato {DataTable} es &quot;mutable&quot;.&#xA;La copia la llamamos dtReportStatus." DataTable="[in_dtReportStatus]" DisplayName="Filter Data Table - to copy datatable" sap:VirtualizedContainerService.HintSize="651,133" sap2010:WorkflowViewState.IdRef="FilterDataTable_7" OutputDataTable="[dtReportStatus]" SelectColumnsMode="Remove">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -105,7 +106,15 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:FilterDataTable>
-    <Assign DisplayName="Assign - current month" sap:VirtualizedContainerService.HintSize="438,70" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign tiene error false" sap:VirtualizedContainerService.HintSize="651,70" sap2010:WorkflowViewState.IdRef="Assign_17">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Boolean">[out_boolTieneError]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign - current month" sap:VirtualizedContainerService.HintSize="651,70" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[currentMonthExcelReport]</OutArgument>
       </Assign.To>
@@ -113,25 +122,7 @@
         <InArgument x:TypeArguments="x:String">[now.ToString("MM.yyyy") +" Listado de ofertas.xlsx"]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:CommentOut DisplayName="Comment Out - testing" sap:VirtualizedContainerService.HintSize="438,61" sap2010:WorkflowViewState.IdRef="CommentOut_8">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,199" sap2010:WorkflowViewState.IdRef="Sequence_28">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dtReportStatus]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="334,97" sap2010:WorkflowViewState.IdRef="ReadRange_5" SheetName="Sheet1" WorkbookPath="C:\UiPath\05.CargaDeContratosAfip\02.Input\08092023_0408-listadoOfertas.xlsx" />
-        </Sequence>
-      </ui:CommentOut.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:CommentOut>
-    <TryCatch DisplayName="Try Catch - to read reporte anterior" sap:VirtualizedContainerService.HintSize="438,334" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch - to read reporte anterior" sap:VirtualizedContainerService.HintSize="651,334" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -158,20 +149,20 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[dtReportStatus]" DisplayName="Write Range Workbook - Current wb" sap:VirtualizedContainerService.HintSize="438,125" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[String.Format(&quot;Reporte_{0}&quot;, Now.ToString(&quot;ddMMyyyy_hhmm&quot;))]" WorkbookPath="[String.Format(&quot;{0}\01-Data\Output\Reportes\ReporteDeCadaEjecucion.xlsx&quot;, System.Environment.CurrentDirectory)]" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtReportStatus]" DisplayName="For Each Row dtReportStatus" sap:VirtualizedContainerService.HintSize="438,61" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+    <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[dtReportStatus]" DisplayName="Write Range Workbook - Current wb" sap:VirtualizedContainerService.HintSize="651,125" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[String.Format(&quot;Reporte_{0}&quot;, Now.ToString(&quot;ddMMyyyy_hhmm&quot;))]" WorkbookPath="[String.Format(&quot;{0}\01-Data\Output\Reportes\ReporteDeCadaEjecucion.xlsx&quot;, System.Environment.CurrentDirectory)]" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtReportStatus]" DisplayName="For Each Row dtReportStatus" sap:VirtualizedContainerService.HintSize="651,581" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Ver si es posible actualizar el estado" sap:VirtualizedContainerService.HintSize="376,620" sap2010:WorkflowViewState.IdRef="Sequence_20">
+          <Sequence DisplayName="Ver si es posible actualizar el estado" sap:VirtualizedContainerService.HintSize="617,456" sap2010:WorkflowViewState.IdRef="Sequence_20">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Assign nroOferta" sap:VirtualizedContainerService.HintSize="334,70" sap2010:WorkflowViewState.IdRef="Assign_7">
+            <Assign DisplayName="Assign nroOferta" sap:VirtualizedContainerService.HintSize="575,70" sap2010:WorkflowViewState.IdRef="Assign_7">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[nroOferta]</OutArgument>
               </Assign.To>
@@ -179,122 +170,144 @@
                 <InArgument x:TypeArguments="x:String">[CurrentRow("Nro. Oferta").ToString]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:LookupDataTable CellValue="{x:Null}" LookupColumnName="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[dtReporteAnterior]" DisplayName="Lookup nroOferta in dtReporteAnterior" sap:VirtualizedContainerService.HintSize="334,306" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnIndex="[0]" LookupValue="[nroOferta]" RowIndex="[rowIndex]" />
-            <If Condition="[rowIndex &lt;&gt; -1]" DisplayName="If rowIndex es distinto -1 (Si se encontró index)" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="If_2">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
+            <If Condition="[CurrentRow(&quot;Estado&quot;) IsNot Nothing AndAlso not CurrentRow(&quot;Estado&quot;).ToString.ToLower.Contains(&quot;error&quot;)]" sap:VirtualizedContainerService.HintSize="575,244" sap2010:WorkflowViewState.IdRef="If_3">
               <If.Then>
-                <ui:IfElseIf DisplayName="Else If Casos que no se actualiza el estad" sap:VirtualizedContainerService.HintSize="451,1372" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
-                  <ui:IfElseIf.ConditionBlocks>
-                    <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
-                      <ui:IfElseIfBlock BlockType="If" Condition="[dtReporteAnterior.Rows(rowIndex).Item(&quot;Estado&quot;).ToString.ToLower.Contains(&quot;pdf&quot;)]">
-                        <ui:IfElseIfBlock.Then>
-                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="265,94" sap2010:WorkflowViewState.IdRef="Sequence_29">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </Sequence>
-                        </ui:IfElseIfBlock.Then>
-                      </ui:IfElseIfBlock>
-                      <ui:IfElseIfBlock BlockType="ElseIf" Condition="[dtReporteAnterior.Rows(rowIndex).Item(&quot;Estado&quot;).ToString.ToLower.Contains(&quot;alcance&quot;)]">
-                        <ui:IfElseIfBlock.Then>
-                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="265,94" sap2010:WorkflowViewState.IdRef="Sequence_30">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </Sequence>
-                        </ui:IfElseIfBlock.Then>
-                      </ui:IfElseIfBlock>
-                      <ui:IfElseIfBlock BlockType="ElseIf" Condition="[dtReporteAnterior.Rows(rowIndex).Item(&quot;Estado&quot;).ToString.ToLower.Equals(&quot;&quot;) or dtReporteAnterior.Rows(rowIndex).Item(&quot;Estado&quot;).ToString.ToLower.Equals(&quot; &quot;) or dtReporteAnterior.Rows(rowIndex).Item(&quot;Estado&quot;).ToString.ToLower = (&quot;&quot;)]">
-                        <ui:IfElseIfBlock.Then>
-                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="265,94" sap2010:WorkflowViewState.IdRef="Sequence_31">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </Sequence>
-                        </ui:IfElseIfBlock.Then>
-                      </ui:IfElseIfBlock>
-                      <ui:IfElseIfBlock BlockType="ElseIf" Condition="[dtReporteAnterior.Rows(rowIndex).Item(&quot;Estado&quot;).ToString.ToLower.Contains(&quot;error&quot;) or dtReporteAnterior.Rows(rowIndex).Item(&quot;Estado&quot;).ToString.ToLower.Contains(&quot;descargar&quot;)]">
-                        <ui:IfElseIfBlock.Then>
-                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="265,94" sap2010:WorkflowViewState.IdRef="Sequence_33">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </Sequence>
-                        </ui:IfElseIfBlock.Then>
-                      </ui:IfElseIfBlock>
-                      <ui:IfElseIfBlock BlockType="Else">
-                        <ui:IfElseIfBlock.Then>
-                          <Sequence DisplayName="Actualizar estado" sap:VirtualizedContainerService.HintSize="307,392" sap2010:WorkflowViewState.IdRef="Sequence_24">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <Assign DisplayName="Assign - Estado anterior" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_8">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:Object">[CurrentRow("Estado")]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:Object">[dtReporteAnterior.Rows(rowIndex).Item("Estado").ToString]</InArgument>
-                              </Assign.Value>
-                            </Assign>
-                            <Assign DisplayName="Assign - En fecha" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_9">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:Object">[CurrentRow("En_fecha")]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:Object">[dtReporteAnterior.Rows(rowIndex).Item("En_fecha").ToString]</InArgument>
-                              </Assign.Value>
-                            </Assign>
-                            <Assign DisplayName="Assign - Fecha_de_carga" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_16">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:Object">[CurrentRow("Fecha_de_carga")]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:Object">[dtReporteAnterior.Rows(rowIndex).Item("Fecha_de_carga").ToString]</InArgument>
-                              </Assign.Value>
-                            </Assign>
-                          </Sequence>
-                        </ui:IfElseIfBlock.Then>
-                      </ui:IfElseIfBlock>
-                    </sc:BindingList>
-                  </ui:IfElseIf.ConditionBlocks>
+                <Sequence DisplayName="Si no es error y ademas no es vacio el estado" sap:VirtualizedContainerService.HintSize="265,76" sap2010:WorkflowViewState.IdRef="Sequence_40">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                </ui:IfElseIf>
+                  <ui:LookupDataTable CellValue="{x:Null}" LookupColumnName="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[dtReporteAnterior]" DisplayName="Lookup nroOferta in dtReporteAnterior" sap:VirtualizedContainerService.HintSize="487,301" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnIndex="[0]" LookupValue="[nroOferta]" RowIndex="[rowIndex]" />
+                  <If Condition="[rowIndex &lt;&gt; -1]" DisplayName="If rowIndex es distinto -1 (Si se encontró index)" sap:VirtualizedContainerService.HintSize="487,1556" sap2010:WorkflowViewState.IdRef="If_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <ui:IfElseIf DisplayName="Else If Casos que no se actualiza el estad" sap:VirtualizedContainerService.HintSize="451,1359" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
+                        <ui:IfElseIf.ConditionBlocks>
+                          <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                            <ui:IfElseIfBlock BlockType="If" Condition="[dtReporteAnterior.Rows(rowIndex).Item(&quot;Estado&quot;).ToString.ToLower.Contains(&quot;pdf&quot;)]">
+                              <ui:IfElseIfBlock.Then>
+                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="265,93" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </ui:IfElseIfBlock.Then>
+                            </ui:IfElseIfBlock>
+                            <ui:IfElseIfBlock BlockType="ElseIf" Condition="[dtReporteAnterior.Rows(rowIndex).Item(&quot;Estado&quot;).ToString.ToLower.Contains(&quot;alcance&quot;)]">
+                              <ui:IfElseIfBlock.Then>
+                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="265,93" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </ui:IfElseIfBlock.Then>
+                            </ui:IfElseIfBlock>
+                            <ui:IfElseIfBlock BlockType="ElseIf" Condition="[dtReporteAnterior.Rows(rowIndex).Item(&quot;Estado&quot;).ToString.ToLower.Equals(&quot;&quot;) or dtReporteAnterior.Rows(rowIndex).Item(&quot;Estado&quot;).ToString.ToLower.Equals(&quot; &quot;) or dtReporteAnterior.Rows(rowIndex).Item(&quot;Estado&quot;).ToString.ToLower = (&quot;&quot;)]">
+                              <ui:IfElseIfBlock.Then>
+                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="265,93" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </ui:IfElseIfBlock.Then>
+                            </ui:IfElseIfBlock>
+                            <ui:IfElseIfBlock BlockType="ElseIf" Condition="[dtReporteAnterior.Rows(rowIndex).Item(&quot;Estado&quot;).ToString.ToLower.Contains(&quot;error&quot;) or dtReporteAnterior.Rows(rowIndex).Item(&quot;Estado&quot;).ToString.ToLower.Contains(&quot;descargar&quot;)]">
+                              <ui:IfElseIfBlock.Then>
+                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="265,93" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </ui:IfElseIfBlock.Then>
+                            </ui:IfElseIfBlock>
+                            <ui:IfElseIfBlock BlockType="Else">
+                              <ui:IfElseIfBlock.Then>
+                                <Sequence DisplayName="Actualizar estado" sap:VirtualizedContainerService.HintSize="307,392" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Assign DisplayName="Assign - Estado anterior" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Object">[CurrentRow("Estado")]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Object">[dtReporteAnterior.Rows(rowIndex).Item("Estado").ToString]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                  <Assign DisplayName="Assign - En fecha" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Object">[CurrentRow("En_fecha")]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Object">[dtReporteAnterior.Rows(rowIndex).Item("En_fecha").ToString]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                  <Assign DisplayName="Assign - Fecha_de_carga" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_16">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Object">[CurrentRow("Fecha_de_carga")]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Object">[dtReporteAnterior.Rows(rowIndex).Item("Fecha_de_carga").ToString]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </ui:IfElseIfBlock.Then>
+                            </ui:IfElseIfBlock>
+                          </sc:BindingList>
+                        </ui:IfElseIf.ConditionBlocks>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:IfElseIf>
+                    </If.Then>
+                  </If>
+                </Sequence>
               </If.Then>
+              <If.Else>
+                <Assign DisplayName="Assign tiene error true" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_18">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Boolean">[out_boolTieneError]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </If.Else>
             </If>
           </Sequence>
         </ActivityAction>
       </ui:ForEachRow.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[String.Format(&quot;{0}\01-Data\Output\Reportes\OFERTAS_TEMPLATE COPY.xlsx&quot;, System.Environment.CurrentDirectory)]" DisplayName="Copy File - OFERTAS_TEMPLATE to output folder" sap:VirtualizedContainerService.HintSize="438,162" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[String.Format(&quot;{0}\01-Data\Input\OFERTAS_TEMPLATE.xlsx&quot;, System.Environment.CurrentDirectory)]" />
-    <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="En_fecha" DataTable="[dtReportStatus]" DisplayName="Sort Data Table - Por &quot;En_fecha&quot;" sap:VirtualizedContainerService.HintSize="438,89" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Ascending" OutputDataTable="[dtReportStatus]" SortOrder="Ascending" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Asignar un número a la columna &quot;Linea&quot; el cual ese numero indica de que estado estamos hablando." DataTable="[dtReportStatus]" DisplayName="For Each Row in dtReportStatus " sap:VirtualizedContainerService.HintSize="438,118" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[String.Format(&quot;{0}\01-Data\Output\Reportes\OFERTAS_TEMPLATE COPY.xlsx&quot;, System.Environment.CurrentDirectory)]" DisplayName="Copy File - OFERTAS_TEMPLATE to output folder" sap:VirtualizedContainerService.HintSize="651,162" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[String.Format(&quot;{0}\01-Data\Input\OFERTAS_TEMPLATE.xlsx&quot;, System.Environment.CurrentDirectory)]" />
+    <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="En_fecha" DataTable="[dtReportStatus]" DisplayName="Sort Data Table - Por &quot;En_fecha&quot;" sap:VirtualizedContainerService.HintSize="651,89" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Ascending" OutputDataTable="[dtReportStatus]" SortOrder="Ascending" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Asignar un número a la columna &quot;Linea&quot; el cual ese numero indica de que estado estamos hablando." DataTable="[dtReportStatus]" DisplayName="For Each Row in dtReportStatus " sap:VirtualizedContainerService.HintSize="651,118" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
@@ -435,7 +448,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" sap2010:Annotation.AnnotationText="Estado definido por columna Linea." ColumnName="Linea" DataTable="[dtReportStatus]" DisplayName="Sort Data Table ordenar por estado" sap:VirtualizedContainerService.HintSize="438,92" sap2010:WorkflowViewState.IdRef="SortDataTable_2" Order="Ascending" OutputDataTable="[dtReportStatus]" SortOrder="Ascending">
+    <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" sap2010:Annotation.AnnotationText="Estado definido por columna Linea." ColumnName="Linea" DataTable="[dtReportStatus]" DisplayName="Sort Data Table ordenar por estado" sap:VirtualizedContainerService.HintSize="651,92" sap2010:WorkflowViewState.IdRef="SortDataTable_2" Order="Ascending" OutputDataTable="[dtReportStatus]" SortOrder="Ascending">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -444,7 +457,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:SortDataTable>
-    <ui:FilterDataTable DataTable="[dtReportStatus]" DisplayName="Filter Data Table - Keep necessary Columns " FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="438,170" sap2010:WorkflowViewState.IdRef="FilterDataTable_6" OutputDataTable="[dtReportStatus]" SelectColumnsMode="Keep">
+    <ui:FilterDataTable DataTable="[dtReportStatus]" DisplayName="Filter Data Table - Keep necessary Columns " FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="651,170" sap2010:WorkflowViewState.IdRef="FilterDataTable_6" OutputDataTable="[dtReportStatus]" SelectColumnsMode="Keep">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
           <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
@@ -496,7 +509,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:FilterDataTable>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,366" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="651,453" sap2010:WorkflowViewState.IdRef="TryCatch_2">
       <TryCatch.Try>
         <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - current template file" sap:VirtualizedContainerService.HintSize="434,216" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" WorkbookPath="[String.Format(&quot;{0}\01-Data\Output\Reportes\OFERTAS_TEMPLATE COPY.xlsx&quot;, System.Environment.CurrentDirectory)]">
           <ui:ExcelApplicationScope.Body>
@@ -510,10 +523,10 @@
         </ui:ExcelApplicationScope>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,194" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="438,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -526,8 +539,8 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[String.Format(&quot;T:\Calidad de Procesos\RPA\Operaciones comerciales\05.CargaDeContratosAfip\03.Output\ReportesExcel\{0}&quot;,  currentMonthExcelReport)]" DisplayName="Move File - template copy to output folder" sap:VirtualizedContainerService.HintSize="438,167" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[String.Format(&quot;{0}\01-Data\Output\Reportes\OFERTAS_TEMPLATE COPY.xlsx&quot;, System.Environment.CurrentDirectory)]" />
-    <ui:FilterDataTable Filters="{x:Null}" SelectColumns="{x:Null}" DataTable="[dtReportStatus]" DisplayName="Filter Data Table" sap:VirtualizedContainerService.HintSize="438,170" sap2010:WorkflowViewState.IdRef="FilterDataTable_8" OutputDataTable="[out_dtReporteActualizado]" SelectColumnsMode="Remove" />
-    <ui:LogMessage DisplayName="Log Message -  reporte actualizado" sap:VirtualizedContainerService.HintSize="438,101" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;--- Reporte excel actualizado ---&quot;]" />
+    <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[String.Format(&quot;T:\Calidad de Procesos\RPA\Operaciones comerciales\05.CargaDeContratosAfip\03.Output\ReportesExcel\{0}&quot;,  currentMonthExcelReport)]" DisplayName="Move File - template copy to output folder" sap:VirtualizedContainerService.HintSize="651,167" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[String.Format(&quot;{0}\01-Data\Output\Reportes\OFERTAS_TEMPLATE COPY.xlsx&quot;, System.Environment.CurrentDirectory)]" />
+    <ui:FilterDataTable Filters="{x:Null}" SelectColumns="{x:Null}" DataTable="[dtReportStatus]" DisplayName="Filter Data Table" sap:VirtualizedContainerService.HintSize="651,170" sap2010:WorkflowViewState.IdRef="FilterDataTable_8" OutputDataTable="[out_dtReporteActualizado]" SelectColumnsMode="Remove" />
+    <ui:LogMessage DisplayName="Log Message -  reporte actualizado" sap:VirtualizedContainerService.HintSize="651,101" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;--- Reporte excel actualizado ---&quot;]" />
   </Sequence>
 </Activity>

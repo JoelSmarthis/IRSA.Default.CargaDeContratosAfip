@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>792,732</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1200,1820</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>JoinReliContribuyente_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -65,9 +65,15 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="JoinReliContribuyente" sap:VirtualizedContainerService.HintSize="686,667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="JoinReliContribuyente" sap:VirtualizedContainerService.HintSize="1210,1755" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="elegirSociedadExists" />
     </Sequence.Variables>
@@ -76,7 +82,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:OnUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" ContinueOnError="True" DisplayName="On Element Appear - elegir sociedad" sap:VirtualizedContainerService.HintSize="644,256" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_1" RepeatForever="True">
+    <ui:OnUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" ContinueOnError="True" DisplayName="On Element Appear - elegir sociedad" sap:VirtualizedContainerService.HintSize="1168,256" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_1" RepeatForever="True">
       <ui:OnUiElementAppear.Body>
         <Assign DisplayName="Assign - elegirSociedadExists" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_1">
           <Assign.To>
@@ -101,7 +107,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:OnUiElementAppear>
-    <If Condition="[elegirSociedadExists]" DisplayName="If elegirSociedadExists = True" sap:VirtualizedContainerService.HintSize="644,269" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[elegirSociedadExists]" DisplayName="If elegirSociedadExists = True" sap:VirtualizedContainerService.HintSize="1168,1357" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
         <ui:LogMessage DisplayName="Log Message - en reli contribuyente" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;En reli contribuyente para elegir sociedad&quot;]">
           <sap:WorkflowViewStateService.ViewState>
@@ -113,7 +119,7 @@
         </ui:LogMessage>
       </If.Then>
       <If.Else>
-        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser - portal de la página de AFIP" sap:VirtualizedContainerService.HintSize="265,61" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="1899aa03d8e98e46970a4044dd731fa0" Selector="&lt;html app='chrome.exe' title='Portal de Clave Fiscal' /&gt;" UiBrowser="[out_afipBrowser]">
+        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser - portal de la página de AFIP" sap:VirtualizedContainerService.HintSize="789,1189" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="1899aa03d8e98e46970a4044dd731fa0" Selector="&lt;html app='chrome.exe' title='Portal de Clave Fiscal' /&gt;" UiBrowser="[out_afipBrowser]">
           <ui:BrowserScope.Body>
             <ActivityAction x:TypeArguments="x:Object">
               <ActivityAction.Argument>
@@ -131,7 +137,7 @@
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="713,61" sap2010:WorkflowViewState.IdRef="CommentOut_1">
                   <ui:CommentOut.Body>
-                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,453" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="797,453" sap2010:WorkflowViewState.IdRef="Sequence_5">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -250,7 +256,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <ui:LogMessage DisplayName="Log Message - se ingresó" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Se pudo ingresar a Reli contribuyente&quot;]">
+                    <ui:LogMessage DisplayName="Log Message - se ingresó" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;No se pudo ingresar a Reli contribuyente&quot;]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -268,7 +274,7 @@
           </ui:BrowserScope.Body>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>

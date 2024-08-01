@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ArmarReporteUsuarios" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ArmarReporteUsuarios" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="out_resumenActualHtml" Type="OutArgument(x:String)" />
     <x:Property Name="in_dtReportActualizado" Type="InArgument(sd:DataTable)" />
@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1262,4163</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>695,2289</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ArmarReporteUsuarios_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -48,7 +48,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="60">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -79,9 +79,11 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Text.Encoding.CodePages</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ArmarReporteUsuarios" sap:VirtualizedContainerService.HintSize="996,4098" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Usamos 1 asignacion LinQ para averiguar cada cosa.&#xA;Averiguamos: &#xA;1) pdf no encontrados semanal&#xA;2) pdf no encontrados mensual&#xA;3) fuera de alcance semanal&#xA;4) fuera de alcance mensual&#xA;5) firmados en el mes&#xA;6) firmados en la semana&#xA;7) total cargados por users&#xA;8) total cargados por bot&#xA;Todas Estas operaciones juntas son 8*O(n) entonces eso lo hace O(n)." DisplayName="ArmarReporteUsuarios" sap:VirtualizedContainerService.HintSize="376,2224" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="totalCargadosPorBot" />
       <Variable x:TypeArguments="x:Int32" Name="totalCargadosPorUsers" />
@@ -94,14 +96,14 @@
       <Variable x:TypeArguments="x:Int32" Name="semanalNoSeEncontro" />
       <Variable x:TypeArguments="x:Int32" Name="contratosFirmadosMes" />
       <Variable x:TypeArguments="x:String" Name="mesActualEspanol" />
-      <Variable x:TypeArguments="x:Int32" Name="contador" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign - mes actual en español" sap:VirtualizedContainerService.HintSize="954,70" sap2010:WorkflowViewState.IdRef="Assign_37">
+    <Assign DisplayName="Assign - mes actual en español" sap:VirtualizedContainerService.HintSize="334,70" sap2010:WorkflowViewState.IdRef="Assign_37">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[mesActualEspanol]</OutArgument>
       </Assign.To>
@@ -109,51 +111,7 @@
         <InArgument x:TypeArguments="x:String">[(Function() System.Globalization.CultureInfo.GetCultureInfo("es-ES").DateTimeFormat.GetMonthName(DateTime.Now.Month))()]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="954,61" sap2010:WorkflowViewState.IdRef="CommentOut_3">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,382" sap2010:WorkflowViewState.IdRef="Sequence_51">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:FilterDataTable DataTable="[in_dtReportActualizado]" DisplayName="Filter Data Table by current month" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="334,170" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[in_dtReportActualizado]" SelectColumnsMode="Remove">
-            <ui:FilterDataTable.Filters>
-              <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
-                  <ui:FilterOperationArgument.Column>
-                    <InArgument x:TypeArguments="x:String">["Fecha de firma"]</InArgument>
-                  </ui:FilterOperationArgument.Column>
-                  <ui:FilterOperationArgument.Operand>
-                    <InArgument x:TypeArguments="x:String">[date_mesAgnoActual]</InArgument>
-                  </ui:FilterOperationArgument.Operand>
-                </ui:FilterOperationArgument>
-              </scg:List>
-            </ui:FilterDataTable.Filters>
-            <ui:FilterDataTable.SelectColumns>
-              <scg:List x:TypeArguments="InArgument" Capacity="4">
-                <x:Null />
-              </scg:List>
-            </ui:FilterDataTable.SelectColumns>
-          </ui:FilterDataTable>
-          <Assign sap:VirtualizedContainerService.HintSize="334,70" sap2010:WorkflowViewState.IdRef="Assign_35">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:Int32">[contratosFirmadosMes]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:Int32">[in_dtReportActualizado.Rows.Count]</InArgument>
-            </Assign.Value>
-          </Assign>
-        </Sequence>
-      </ui:CommentOut.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:CommentOut>
-    <Assign DisplayName="Assign - mes y año actual" sap:VirtualizedContainerService.HintSize="954,70" sap2010:WorkflowViewState.IdRef="Assign_15">
+    <Assign DisplayName="Assign - mes y año actual" sap:VirtualizedContainerService.HintSize="334,70" sap2010:WorkflowViewState.IdRef="Assign_15">
       <Assign.To>
         <OutArgument x:TypeArguments="s:DateTime">[date_mesAgnoActual]</OutArgument>
       </Assign.To>
@@ -161,7 +119,7 @@
         <InArgument x:TypeArguments="s:DateTime">[CDate(now.ToString("M/1/yyyy"))]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap2010:Annotation.AnnotationText="desde inicio contrato es 7 días antes de la fecha actual." DisplayName="Assign - desde inicioContrato" sap:VirtualizedContainerService.HintSize="954,112" sap2010:WorkflowViewState.IdRef="Assign_17">
+    <Assign sap2010:Annotation.AnnotationText="desde inicio contrato es 7 días antes de la fecha actual." DisplayName="Assign - desde inicioContrato" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="Assign_17">
       <Assign.To>
         <OutArgument x:TypeArguments="s:DateTime">[date_diasAtras]</OutArgument>
       </Assign.To>
@@ -174,333 +132,81 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtReportActualizado]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="954,2793" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
-      <ui:ForEachRow.Body>
-        <ActivityAction x:TypeArguments="sd:DataRow">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="reporteRow" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="920,2668" sap2010:WorkflowViewState.IdRef="Sequence_17">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="s:DateTime" Name="date_fechaDeCarga" />
-              <Variable x:TypeArguments="s:DateTime" Name="date_fechaDeFirma" />
-            </Sequence.Variables>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Assign - inicioContrato(fecha de firma)" sap:VirtualizedContainerService.HintSize="878,70" sap2010:WorkflowViewState.IdRef="Assign_16">
-              <Assign.To>
-                <OutArgument x:TypeArguments="s:DateTime">[date_fechaDeFirma]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="s:DateTime">[CDate(reporteRow("Fecha de firma").ToString)]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <ui:CommentOut DisplayName="Comment Out fecha de carga" sap:VirtualizedContainerService.HintSize="878,61" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-              <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="701,401" sap2010:WorkflowViewState.IdRef="Sequence_28">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[reporteRow(&quot;Fecha_de_carga&quot;).ToString = &quot;-&quot;]" DisplayName="If fecha de carga es guion" sap:VirtualizedContainerService.HintSize="265,61" sap2010:WorkflowViewState.IdRef="If_10">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <If.Then>
-                      <Sequence sap:VirtualizedContainerService.HintSize="307,172" sap2010:WorkflowViewState.IdRef="Sequence_24">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <Assign DisplayName="fecha de carga en el 2000" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_22">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="s:DateTime">[date_fechaDeCarga]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="s:DateTime">[CDate("29.01.2000")]</InArgument>
-                          </Assign.Value>
-                        </Assign>
-                      </Sequence>
-                    </If.Then>
-                    <If.Else>
-                      <Sequence sap:VirtualizedContainerService.HintSize="307,172" sap2010:WorkflowViewState.IdRef="Sequence_25">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <Assign DisplayName="Assign - fecha de carga" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_21">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="s:DateTime">[date_fechaDeCarga]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="s:DateTime">[CDate(reporteRow("Fecha_de_carga").ToString)]</InArgument>
-                          </Assign.Value>
-                        </Assign>
-                      </Sequence>
-                    </If.Else>
-                  </If>
-                </Sequence>
-              </ui:CommentOut.Body>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:CommentOut>
-            <If Condition="[date_fechaDeFirma &gt;= date_mesAgnoActual]" sap:VirtualizedContainerService.HintSize="878,2355" sap2010:WorkflowViewState.IdRef="If_11">
-              <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="526,2187" sap2010:WorkflowViewState.IdRef="Sequence_52">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="484,70" sap2010:WorkflowViewState.IdRef="Assign_38">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Int32">[contratosFirmadosMes]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Int32">[contratosFirmadosMes+1]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="484,1465" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
-                    <ui:IfElseIf.ConditionBlocks>
-                      <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
-                        <ui:IfElseIfBlock BlockType="If" Condition="False">
-                          <ui:IfElseIfBlock.Then>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="265,93" sap2010:WorkflowViewState.IdRef="Sequence_49">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                            </Sequence>
-                          </ui:IfElseIfBlock.Then>
-                        </ui:IfElseIfBlock>
-                        <ui:IfElseIfBlock BlockType="ElseIf" Condition="[reporteRow(&quot;Estado&quot;).ToString.Contains(&quot;&quot;&quot;&quot;)]">
-                          <ui:IfElseIfBlock.Then>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="307,172" sap2010:WorkflowViewState.IdRef="Sequence_42">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <Assign sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_18">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="x:Int32">[totalCargadosPorUsers]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="x:Int32">[totalCargadosPorUsers+1]</InArgument>
-                                </Assign.Value>
-                              </Assign>
-                            </Sequence>
-                          </ui:IfElseIfBlock.Then>
-                        </ui:IfElseIfBlock>
-                        <ui:IfElseIfBlock BlockType="ElseIf" Condition="[reporteRow(&quot;Estado&quot;).ToString.ToLower.Contains(&quot;pdf&quot;)]">
-                          <ui:IfElseIfBlock.Then>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="307,172" sap2010:WorkflowViewState.IdRef="Sequence_43">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <Assign sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_19">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="x:Int32">[totalNoSeEncontro]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="x:Int32">[totalNoSeEncontro+1]</InArgument>
-                                </Assign.Value>
-                              </Assign>
-                            </Sequence>
-                          </ui:IfElseIfBlock.Then>
-                        </ui:IfElseIfBlock>
-                        <ui:IfElseIfBlock BlockType="ElseIf" Condition="[reporteRow(&quot;Estado&quot;).ToString.ToLower.Contains(&quot;alcance&quot;)]">
-                          <ui:IfElseIfBlock.Then>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="307,172" sap2010:WorkflowViewState.IdRef="Sequence_44">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <Assign sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_20">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="x:Int32">[totalFueraDeAlcance]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="x:Int32">[totalFueraDeAlcance+1]</InArgument>
-                                </Assign.Value>
-                              </Assign>
-                            </Sequence>
-                          </ui:IfElseIfBlock.Then>
-                        </ui:IfElseIfBlock>
-                        <ui:IfElseIfBlock BlockType="ElseIf" Condition="[reporteRow(&quot;Estado&quot;).ToString.Trim().IsNumeric]">
-                          <ui:IfElseIfBlock.Then>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="307,172" sap2010:WorkflowViewState.IdRef="Sequence_45">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <Assign sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_31">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="x:Int32">[totalCargadosPorBot]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="x:Int32">[totalCargadosPorBot+1]</InArgument>
-                                </Assign.Value>
-                              </Assign>
-                            </Sequence>
-                          </ui:IfElseIfBlock.Then>
-                        </ui:IfElseIfBlock>
-                      </sc:BindingList>
-                    </ui:IfElseIf.ConditionBlocks>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ui:IfElseIf>
-                  <If Condition="[date_fechaDeFirma &gt;= date_diasAtras]" DisplayName="If -  inicioContrato es mayor igual a desdeInicioContrato" sap:VirtualizedContainerService.HintSize="484,470" sap2010:WorkflowViewState.IdRef="If_7">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <If.Then>
-                      <Sequence DisplayName="agregar linea a la tabla" sap:VirtualizedContainerService.HintSize="307,273" sap2010:WorkflowViewState.IdRef="Sequence_18">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <Assign sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_32">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="x:Int32">[contratosFirmadosSemana]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="x:Int32">[contratosFirmadosSemana+1]</InArgument>
-                          </Assign.Value>
-                        </Assign>
-                        <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="265,61" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
-                          <ui:IfElseIf.ConditionBlocks>
-                            <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
-                              <ui:IfElseIfBlock BlockType="If" Condition="False">
-                                <ui:IfElseIfBlock.Then>
-                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="265,93" sap2010:WorkflowViewState.IdRef="Sequence_46">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </Sequence>
-                                </ui:IfElseIfBlock.Then>
-                              </ui:IfElseIfBlock>
-                              <ui:IfElseIfBlock BlockType="ElseIf" Condition="[reporteRow(&quot;Estado&quot;).ToString.ToLower.Contains(&quot;pdf&quot;)]">
-                                <ui:IfElseIfBlock.Then>
-                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="307,172" sap2010:WorkflowViewState.IdRef="Sequence_47">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <Assign sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_33">
-                                      <Assign.To>
-                                        <OutArgument x:TypeArguments="x:Int32">[semanalNoSeEncontro]</OutArgument>
-                                      </Assign.To>
-                                      <Assign.Value>
-                                        <InArgument x:TypeArguments="x:Int32">[semanalNoSeEncontro+1]</InArgument>
-                                      </Assign.Value>
-                                    </Assign>
-                                  </Sequence>
-                                </ui:IfElseIfBlock.Then>
-                              </ui:IfElseIfBlock>
-                              <ui:IfElseIfBlock BlockType="ElseIf" Condition="[reporteRow(&quot;Estado&quot;).ToString.ToLower.Contains(&quot;alcance&quot;)]">
-                                <ui:IfElseIfBlock.Then>
-                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="307,172" sap2010:WorkflowViewState.IdRef="Sequence_48">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <Assign sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_34">
-                                      <Assign.To>
-                                        <OutArgument x:TypeArguments="x:Int32">[semanalFueraDeAlcance]</OutArgument>
-                                      </Assign.To>
-                                      <Assign.Value>
-                                        <InArgument x:TypeArguments="x:Int32">[semanalFueraDeAlcance+1]</InArgument>
-                                      </Assign.Value>
-                                    </Assign>
-                                  </Sequence>
-                                </ui:IfElseIfBlock.Then>
-                              </ui:IfElseIfBlock>
-                            </sc:BindingList>
-                          </ui:IfElseIf.ConditionBlocks>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </ui:IfElseIf>
-                      </Sequence>
-                    </If.Then>
-                    <If.Else>
-                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_19">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </Sequence>
-                    </If.Else>
-                  </If>
-                </Sequence>
-              </If.Then>
-              <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="307,172" sap2010:WorkflowViewState.IdRef="Sequence_53">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_39">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Int32">[contador]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Int32">[contador+1]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                </Sequence>
-              </If.Else>
-            </If>
-          </Sequence>
-        </ActivityAction>
-      </ui:ForEachRow.Body>
+    <Sequence sap2010:Annotation.AnnotationText="8*O(n)" DisplayName="Asignar totals semanales e mensuales" sap:VirtualizedContainerService.HintSize="334,973" sap2010:WorkflowViewState.IdRef="Sequence_55">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </ui:ForEachRow>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="954,101" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;La variable contador es &quot; + contador.ToString]" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="954,101" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[String.Format(&quot;{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}\n{7}\n{8}\n{9}&quot;, in_contratosCargados, mesActualEspanol, contratosFirmadosSemana, semanalNoSeEncontro, semanalFueraDeAlcance, contratosFirmadosMes, totalNoSeEncontro, totalFueraDeAlcance, totalCargadosPorUsers, totalCargadosPorBot)]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CrearReporteHtml.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="954,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="CrearReporteHtml.xaml">
+      <Assign DisplayName="Assign - no pdf semana" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_40">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[semanalNoSeEncontro]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">[in_dtReportActualizado.AsEnumerable.Count(Function (row) row("Estado").ToString.ToLower.Contains("pdf") AndAlso CDate(row("Fecha de firma")) &gt;= date_diasAtras)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign -  no pdf mes" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_41">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[totalNoSeEncontro]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">[in_dtReportActualizado.AsEnumerable.Count(Function (row) row("Estado").ToString.ToLower.Contains("pdf") AndAlso CDate(row("Fecha de firma").ToString) &gt;= date_mesAgnoActual)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign -  no alcance semana" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_44">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[semanalFueraDeAlcance]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">[in_dtReportActualizado.AsEnumerable.Count(Function (row) row("Estado").ToString.ToLower.Contains("alcance") AndAlso CDate(row("Fecha de firma").ToString) &gt;= date_diasAtras)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign -  no alcance mes" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_46">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[totalFueraDeAlcance]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">[in_dtReportActualizado.AsEnumerable.Count(Function (row) row("Estado").ToString.ToLower.Contains("alcance") AndAlso CDate(row("Fecha de firma").ToString) &gt;= date_mesAgnoActual)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign - firmados mes" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_42">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[contratosFirmadosMes]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">[in_dtReportActualizado.AsEnumerable.Count(Function (row) CDate(row("Fecha de firma").ToString) &gt;= date_mesAgnoActual)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign - firmados semana" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_43">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[contratosFirmadosSemana]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">[in_dtReportActualizado.AsEnumerable.Count(Function (row) CDate(row("Fecha de firma").ToString) &gt;= date_diasAtras)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign - total cargados por users" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_47">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[totalCargadosPorUsers]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">[in_dtReportActualizado.AsEnumerable.Count(Function (row) row("Estado").ToString.Contains(""""))]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign - total cargados por bot" sap:VirtualizedContainerService.HintSize="265,70" sap2010:WorkflowViewState.IdRef="Assign_48">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[totalCargadosPorBot]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">[in_dtReportActualizado.AsEnumerable.Count(Function (row) row("Estado").ToString.Trim().IsNumeric)]</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
+    <ui:LogMessage DisplayName="Log Message datos generados" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[String.Format(&quot;Cargados semana {0}| Mes {1}| Firmados semana {2}| Semana no pdf {3}| Semana no alcance {4}| Firmados mes {5}| Mes no pdf {6}| Mes no alcance {7}| Total usuarios {8}| Total cargados bot {9}&quot;, in_contratosCargados, mesActualEspanol, contratosFirmadosSemana, semanalNoSeEncontro, semanalFueraDeAlcance, contratosFirmadosMes, totalNoSeEncontro, totalFueraDeAlcance, totalCargadosPorUsers, totalCargadosPorBot)]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CrearReporteHtml.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="CrearReporteHtml.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_styleCss">table {border-collapse: collapse; border-style: double; border-color: #005f6b; width: 70%; background-color: white;} th, td {border: 1px solid #005f6b; border-collapse: collapse; padding: 12px; font-size: 12px; text-align: left;} th.width20, td.width20 {width: 20%;} th.width25, td.width25 {width: 25%;} td.numberCell {width: 5%;}</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_contratosCargados">[in_contratosCargados.ToString]</InArgument>
@@ -516,7 +222,7 @@
         <OutArgument x:TypeArguments="x:String" x:Key="out_reportesHtml">[out_resumenActualHtml]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="560,103" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[out_resumenActualHtml]" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="560,103" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Se obtuvieron los datos para el reporte final&quot;]" />
+    <ui:LogMessage DisplayName="Log Message - html" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[out_resumenActualHtml]" />
+    <ui:LogMessage DisplayName="Log Message - finalizo" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Se obtuvieron los datos para el reporte final&quot;]" />
   </Sequence>
 </Activity>

@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1155,3886</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1155,2911</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>VerificarDatos_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="56">
@@ -69,11 +69,10 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="VerificarDatos" sap:VirtualizedContainerService.HintSize="1165,3821" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="VerificarDatos" sap:VirtualizedContainerService.HintSize="1165,2846" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Default="False" Name="descargarComprobanteExists" />
     </Sequence.Variables>
@@ -92,13 +91,13 @@
         </InArgument>
       </Assign.Value>
     </Assign>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe '" sap:VirtualizedContainerService.HintSize="1123,3609" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="1667350d5ca62c17c5387526ee22ef16" Selector="&lt;html app='chrome.exe' title='servicioscf.afip.gob.ar/fiscalizacion/reli/app/contrato/ConfirmacionContrato.aspx' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe '" sap:VirtualizedContainerService.HintSize="1123,2634" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="1667350d5ca62c17c5387526ee22ef16" Selector="&lt;html app='chrome.exe' title='servicioscf.afip.gob.ar/fiscalizacion/reli/app/contrato/ConfirmacionContrato.aspx' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1089,3453" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1089,2478" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="valorEnPesos" />
             </Sequence.Variables>
@@ -107,7 +106,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayMS="1500" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="1047,142" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="pgdn" KeyModifiers="None" SpecialKey="True">
+            <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayMS="1500" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="1047,61" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="pgdn" KeyModifiers="None" SpecialKey="True">
               <ui:SendHotkey.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="81e23a19-78f2-411c-8e82-f375214c2602">
                   <ui:Target.TimeoutMS>
@@ -118,20 +117,14 @@
                   </ui:Target.WaitForReady>
                 </ui:Target>
               </ui:SendHotkey.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:SendHotkey>
-            <ui:GetValue ContinueOnError="{x:Null}" Value="{x:Null}" DisplayName="Get Text - nomrbe sociedad" sap:VirtualizedContainerService.HintSize="1047,116" sap2010:WorkflowViewState.IdRef="GetValue_1">
-              <ui:GetValue.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8f33b24f-6b42-4ce8-9d98-01c9c24ac85a" InformativeScreenshot="57728b50c03fea2bace09c05eb45c973" Selector="&lt;webctrl aaname='Nombre y Apellido Razón social ' tag='LABEL' /&gt;&lt;nav up='1' /&gt;&lt;webctrl id='propietarioRZ0' tag='P' parentid='tblLocador' /&gt;">
-                  <ui:Target.TimeoutMS>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:Target.TimeoutMS>
-                  <ui:Target.WaitForReady>
-                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                  </ui:Target.WaitForReady>
-                </ui:Target>
-              </ui:GetValue.Target>
-            </ui:GetValue>
-            <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayMS="1500" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="1047,142" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="pgdn" KeyModifiers="None" SpecialKey="True">
+            <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayMS="1500" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="1047,61" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="pgdn" KeyModifiers="None" SpecialKey="True">
               <ui:SendHotkey.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="81e23a19-78f2-411c-8e82-f375214c2602">
                   <ui:Target.TimeoutMS>
@@ -142,32 +135,14 @@
                   </ui:Target.WaitForReady>
                 </ui:Target>
               </ui:SendHotkey.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:SendHotkey>
-            <ui:GetValue ContinueOnError="{x:Null}" Value="{x:Null}" DisplayName="Get Text - CUIT locatario" sap:VirtualizedContainerService.HintSize="1047,116" sap2010:WorkflowViewState.IdRef="GetValue_2">
-              <ui:GetValue.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d3332f86-fcd3-40e7-a6ef-18dca4367bc2" InformativeScreenshot="a95454c1468be1f56855272f8ceb837b" Selector="&lt;webctrl aaname='CUIT/CUIL/CDIPasaporte/NIF/CIE/DU' parentid='tblInquilinos' tag='LABEL' /&gt;&lt;nav up='1' /&gt;&lt;webctrl id='inquiCuit0' tag='P' class='form-control-static texto-quebrado' parentclass='form-group col-sm-3' /&gt;">
-                  <ui:Target.TimeoutMS>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:Target.TimeoutMS>
-                  <ui:Target.WaitForReady>
-                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                  </ui:Target.WaitForReady>
-                </ui:Target>
-              </ui:GetValue.Target>
-            </ui:GetValue>
-            <ui:GetValue ContinueOnError="{x:Null}" Value="{x:Null}" DisplayName="Get Text - local/puesto" sap:VirtualizedContainerService.HintSize="1047,116" sap2010:WorkflowViewState.IdRef="GetValue_3">
-              <ui:GetValue.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4e6a61e8-13d6-4dd3-809d-0b05b30e8c03" InformativeScreenshot="7ac3feb62ee16cfefe2ace2870afc08a" Selector="&lt;webctrl parentid='tblInmueble' tag='LABEL' /&gt;&lt;nav up='1' /&gt;&lt;webctrl id='inmDto' tag='P' class='form-control-static' parentid='tblInmueble' /&gt;">
-                  <ui:Target.TimeoutMS>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:Target.TimeoutMS>
-                  <ui:Target.WaitForReady>
-                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                  </ui:Target.WaitForReady>
-                </ui:Target>
-              </ui:GetValue.Target>
-            </ui:GetValue>
-            <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayMS="1500" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="1047,142" sap2010:WorkflowViewState.IdRef="SendHotkey_3" Key="pgdn" KeyModifiers="None" SpecialKey="True">
+            <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayMS="1500" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="1047,61" sap2010:WorkflowViewState.IdRef="SendHotkey_3" Key="pgdn" KeyModifiers="None" SpecialKey="True">
               <ui:SendHotkey.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="81e23a19-78f2-411c-8e82-f375214c2602">
                   <ui:Target.TimeoutMS>
@@ -178,20 +153,14 @@
                   </ui:Target.WaitForReady>
                 </ui:Target>
               </ui:SendHotkey.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:SendHotkey>
-            <ui:GetValue ContinueOnError="{x:Null}" Value="{x:Null}" DisplayName="Get Text 'P  inmProvincia'" sap:VirtualizedContainerService.HintSize="1047,116" sap2010:WorkflowViewState.IdRef="GetValue_4">
-              <ui:GetValue.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="eb61c8bc-cf5d-4c68-952d-22e8b0196ac0" InformativeScreenshot="2402a23a947aaa713af586f42c263f67" Selector="&lt;webctrl aaname='Provincia' parentid='tblInmueble' tag='LABEL' /&gt;&lt;nav up='1' /&gt;&lt;webctrl id='inmProvincia' tag='P' class='form-control-static' parentclass='form-group col-sm-4' /&gt;">
-                  <ui:Target.TimeoutMS>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:Target.TimeoutMS>
-                  <ui:Target.WaitForReady>
-                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                  </ui:Target.WaitForReady>
-                </ui:Target>
-              </ui:GetValue.Target>
-            </ui:GetValue>
-            <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayMS="1500" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="1047,142" sap2010:WorkflowViewState.IdRef="SendHotkey_4" Key="pgdn" KeyModifiers="None" SpecialKey="True">
+            <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayMS="1500" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="1047,61" sap2010:WorkflowViewState.IdRef="SendHotkey_4" Key="pgdn" KeyModifiers="None" SpecialKey="True">
               <ui:SendHotkey.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="81e23a19-78f2-411c-8e82-f375214c2602">
                   <ui:Target.TimeoutMS>
@@ -202,55 +171,25 @@
                   </ui:Target.WaitForReady>
                 </ui:Target>
               </ui:SendHotkey.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:SendHotkey>
-            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'TD  contValorPesos0'" sap:VirtualizedContainerService.HintSize="1047,116" sap2010:WorkflowViewState.IdRef="GetValue_6">
-              <ui:GetValue.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="92530fa8-57d6-4bcb-a339-3889b26d96d7" InformativeScreenshot="4da69027a6c4a496be3598f150e32c74" Selector="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='contValorPesos0' tableRow='2' tag='TD' colName='Valor en pesos' /&gt;">
-                  <ui:Target.TimeoutMS>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:Target.TimeoutMS>
-                  <ui:Target.WaitForReady>
-                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                  </ui:Target.WaitForReady>
-                </ui:Target>
-              </ui:GetValue.Target>
-              <ui:GetValue.Value>
-                <OutArgument x:TypeArguments="x:String">[valorEnPesos]</OutArgument>
-              </ui:GetValue.Value>
-            </ui:GetValue>
-            <ui:GetValue ContinueOnError="{x:Null}" Value="{x:Null}" DisplayName="Get Text 'A  #'" sap:VirtualizedContainerService.HintSize="1047,116" sap2010:WorkflowViewState.IdRef="GetValue_5">
-              <ui:GetValue.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7afaf931-6605-41f5-9584-58fcc550c68f" InformativeScreenshot="e05b61dac919f9129b7709180285f3be" Selector="&lt;webctrl parentid='tblArchivos' tag='LABEL' /&gt;&lt;nav up='1' /&gt;&lt;webctrl parentid='tblArchivos' tag='A' parentclass='form-group col-sm-8' /&gt;">
-                  <ui:Target.TimeoutMS>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:Target.TimeoutMS>
-                  <ui:Target.WaitForReady>
-                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                  </ui:Target.WaitForReady>
-                </ui:Target>
-              </ui:GetValue.Target>
-            </ui:GetValue>
-            <If Condition="[out_observaciones = &quot;&quot;]" sap:VirtualizedContainerService.HintSize="1047,1687" sap2010:WorkflowViewState.IdRef="If_1">
-              <If.Then>
-                <Sequence DisplayName="Todo correcto para cargar" sap:VirtualizedContainerService.HintSize="526,1520" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1047,61" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="265,76" sap2010:WorkflowViewState.IdRef="Sequence_15">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="500" DelayMS="500" DisplayName="Click - CONFIRMAR" sap:VirtualizedContainerService.HintSize="484,116" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
-                    <ui:Click.CursorPosition>
-                      <ui:CursorPosition Position="Center">
-                        <ui:CursorPosition.OffsetX>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetX>
-                        <ui:CursorPosition.OffsetY>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetY>
-                      </ui:CursorPosition>
-                    </ui:Click.CursorPosition>
-                    <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a1313e03-57b5-4f7f-9ad4-f6daf7dac480" InformativeScreenshot="9da5533235746cc24f2dd334e5306900" Selector="&lt;webctrl id='btnSiguiente' tag='A' parentid='formDirector' visibleinnertext='CONFIRMAR' /&gt;">
+                  <ui:GetValue ContinueOnError="{x:Null}" Value="{x:Null}" DisplayName="Get Text - nomrbe sociedad" sap:VirtualizedContainerService.HintSize="334,116" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                    <ui:GetValue.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8f33b24f-6b42-4ce8-9d98-01c9c24ac85a" InformativeScreenshot="57728b50c03fea2bace09c05eb45c973" Selector="&lt;webctrl aaname='Nombre y Apellido Razón social ' tag='LABEL' /&gt;&lt;nav up='1' /&gt;&lt;webctrl id='propietarioRZ0' tag='P' parentid='tblLocador' /&gt;">
                         <ui:Target.TimeoutMS>
                           <InArgument x:TypeArguments="x:Int32" />
                         </ui:Target.TimeoutMS>
@@ -258,8 +197,125 @@
                           <InArgument x:TypeArguments="ui:WaitForReady" />
                         </ui:Target.WaitForReady>
                       </ui:Target>
-                    </ui:Click.Target>
-                  </ui:Click>
+                    </ui:GetValue.Target>
+                  </ui:GetValue>
+                  <ui:GetValue ContinueOnError="{x:Null}" Value="{x:Null}" DisplayName="Get Text - CUIT locatario" sap:VirtualizedContainerService.HintSize="334,116" sap2010:WorkflowViewState.IdRef="GetValue_2">
+                    <ui:GetValue.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d3332f86-fcd3-40e7-a6ef-18dca4367bc2" InformativeScreenshot="a95454c1468be1f56855272f8ceb837b" Selector="&lt;webctrl aaname='CUIT/CUIL/CDIPasaporte/NIF/CIE/DU' parentid='tblInquilinos' tag='LABEL' /&gt;&lt;nav up='1' /&gt;&lt;webctrl id='inquiCuit0' tag='P' class='form-control-static texto-quebrado' parentclass='form-group col-sm-3' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:GetValue.Target>
+                  </ui:GetValue>
+                  <ui:GetValue ContinueOnError="{x:Null}" Value="{x:Null}" DisplayName="Get Text - local/puesto" sap:VirtualizedContainerService.HintSize="334,116" sap2010:WorkflowViewState.IdRef="GetValue_3">
+                    <ui:GetValue.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4e6a61e8-13d6-4dd3-809d-0b05b30e8c03" InformativeScreenshot="7ac3feb62ee16cfefe2ace2870afc08a" Selector="&lt;webctrl parentid='tblInmueble' tag='LABEL' /&gt;&lt;nav up='1' /&gt;&lt;webctrl id='inmDto' tag='P' class='form-control-static' parentid='tblInmueble' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:GetValue.Target>
+                  </ui:GetValue>
+                  <ui:GetValue ContinueOnError="{x:Null}" Value="{x:Null}" DisplayName="Get Text 'P  inmProvincia'" sap:VirtualizedContainerService.HintSize="334,116" sap2010:WorkflowViewState.IdRef="GetValue_4">
+                    <ui:GetValue.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="eb61c8bc-cf5d-4c68-952d-22e8b0196ac0" InformativeScreenshot="2402a23a947aaa713af586f42c263f67" Selector="&lt;webctrl aaname='Provincia' parentid='tblInmueble' tag='LABEL' /&gt;&lt;nav up='1' /&gt;&lt;webctrl id='inmProvincia' tag='P' class='form-control-static' parentclass='form-group col-sm-4' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:GetValue.Target>
+                  </ui:GetValue>
+                  <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'TD  contValorPesos0'" sap:VirtualizedContainerService.HintSize="334,116" sap2010:WorkflowViewState.IdRef="GetValue_6">
+                    <ui:GetValue.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="92530fa8-57d6-4bcb-a339-3889b26d96d7" InformativeScreenshot="4da69027a6c4a496be3598f150e32c74" Selector="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='contValorPesos0' tableRow='2' tag='TD' colName='Valor en pesos' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:GetValue.Target>
+                    <ui:GetValue.Value>
+                      <OutArgument x:TypeArguments="x:String">[valorEnPesos]</OutArgument>
+                    </ui:GetValue.Value>
+                  </ui:GetValue>
+                  <ui:GetValue ContinueOnError="{x:Null}" Value="{x:Null}" DisplayName="Get Text 'A  #'" sap:VirtualizedContainerService.HintSize="334,116" sap2010:WorkflowViewState.IdRef="GetValue_5">
+                    <ui:GetValue.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7afaf931-6605-41f5-9584-58fcc550c68f" InformativeScreenshot="e05b61dac919f9129b7709180285f3be" Selector="&lt;webctrl parentid='tblArchivos' tag='LABEL' /&gt;&lt;nav up='1' /&gt;&lt;webctrl parentid='tblArchivos' tag='A' parentclass='form-group col-sm-8' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:GetValue.Target>
+                  </ui:GetValue>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <If Condition="[out_observaciones = &quot;&quot;]" sap:VirtualizedContainerService.HintSize="1047,1871" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence DisplayName="Todo correcto para cargar" sap:VirtualizedContainerService.HintSize="526,1704" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="484,300" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="2" RetryInterval="00:00:04">
+                    <ui:RetryScope.ActivityBody>
+                      <ActivityAction>
+                        <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="500" DelayMS="500" DisplayName="Click - CONFIRMAR" sap:VirtualizedContainerService.HintSize="334,116" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a1313e03-57b5-4f7f-9ad4-f6daf7dac480" InformativeScreenshot="9da5533235746cc24f2dd334e5306900" Selector="&lt;webctrl id='btnSiguiente' tag='A' parentid='formDirector' visibleinnertext='CONFIRMAR' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:Click.Target>
+                        </ui:Click>
+                      </ActivityAction>
+                    </ui:RetryScope.ActivityBody>
+                    <ui:RetryScope.Condition>
+                      <ActivityFunc x:TypeArguments="x:Boolean" />
+                    </ui:RetryScope.Condition>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:RetryScope>
                   <Assign DisplayName="Assign descarga comprobante como false" sap:VirtualizedContainerService.HintSize="484,70" sap2010:WorkflowViewState.IdRef="Assign_3">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Boolean">[descargarComprobanteExists]</OutArgument>
@@ -369,7 +425,7 @@
                           </Assign>
                           <ui:CommentOut DisplayName="Comment Out volver" sap:VirtualizedContainerService.HintSize="265,61" sap2010:WorkflowViewState.IdRef="CommentOut_1">
                             <ui:CommentOut.Body>
-                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,319" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="512,319" sap2010:WorkflowViewState.IdRef="Sequence_12">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>

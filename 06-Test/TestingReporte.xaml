@@ -8,10 +8,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1346,4114</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1249,5665</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ConsolidacionReporte_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="32">
+    <scg:List x:TypeArguments="x:String" Capacity="64">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -44,10 +44,12 @@
       <x:String>UiPath.Excel.Activities</x:String>
       <x:String>UiPath.DataTableUtilities</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="60">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -77,21 +79,149 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ConsolidacionReporte" sap:VirtualizedContainerService.HintSize="605,4049" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ConsolidacionReporte" sap:VirtualizedContainerService.HintSize="605,5440" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="currentMonthExcelReport" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtReporteAnterior" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtReportStatus" />
       <Variable x:TypeArguments="x:String" Name="nroOferta" />
       <Variable x:TypeArguments="x:Int32" Name="rowIndex" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtReporteActualizado" />
+      <Variable x:TypeArguments="x:String" Name="resumenActualHtml" />
+      <Variable x:TypeArguments="x:Int32" Name="contratosCargados">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:Int32" Value="11" />
+        </Variable.Default>
+      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists 'H3  tituloModalMensajeG...'" sap:VirtualizedContainerService.HintSize="563,116" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+      <ui:UiElementExists.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2e7c4602-5451-4c8c-973c-c3b3e27130a9" InformativeScreenshot="0c898585e457419d0be971ca02930b3b" Selector="&lt;html app='chrome.exe' title='servicioscf.afip.gob.ar/fiscalizacion/reli/app/Menucontribuyente.aspx' /&gt;&lt;webctrl id='tituloModalMensajeGral' tag='H3' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:UiElementExists.Target>
+    </ui:UiElementExists>
+    <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists 'P  mensajeOKModalMensaj...'" sap:VirtualizedContainerService.HintSize="563,116" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+      <ui:UiElementExists.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a9755b65-262e-4458-9c20-049ddab52014" InformativeScreenshot="848a539b68a9d22b03c1836da7ad876b" Selector="&lt;html app='chrome.exe' title='servicioscf.afip.gob.ar/fiscalizacion/reli/app/Menucontribuyente.aspx' /&gt;&lt;webctrl parentid='dvModalMensajeGralImgError' tableRow='1' tag='TABLE' /&gt;&lt;webctrl id='mensajeOKModalMensajeGral' tableRow='1' tag='P' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:UiElementExists.Target>
+    </ui:UiElementExists>
+    <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists 'BUTTON  modalMensajeBtn...'" sap:VirtualizedContainerService.HintSize="563,116" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+      <ui:UiElementExists.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6acd887e-0f18-4590-a70b-e56f828640db" InformativeScreenshot="297e79077b362e7c9712c8f7d79b5f55" Selector="&lt;html app='chrome.exe' title='servicioscf.afip.gob.ar/fiscalizacion/reli/app/Menucontribuyente.aspx' /&gt;&lt;webctrl id='modalMensajeBtnContinuar' tag='BUTTON' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:UiElementExists.Target>
+    </ui:UiElementExists>
+    <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists 'DIV'" sap:VirtualizedContainerService.HintSize="563,116" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
+      <ui:UiElementExists.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1e941ae6-aa28-4104-bda9-732eeedea304" InformativeScreenshot="aaa24ce4fe64666e0fb90ff1402c395a" Selector="&lt;html app='chrome.exe' title='servicioscf.afip.gob.ar/fiscalizacion/reli/app/Menucontribuyente.aspx' /&gt;&lt;webctrl css-selector='body&amp;gt;div' parentid='simple' tag='DIV' class='blockUI undefined blockPage' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:UiElementExists.Target>
+    </ui:UiElementExists>
+    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button  Continuar'" sap:VirtualizedContainerService.HintSize="563,116" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:Click.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:Click.CursorPosition>
+      <ui:Click.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d8aeca64-d30a-41c0-9dc1-20a345c1f4f2" InformativeScreenshot="e11bda69d49e11670e91da08b4c56066" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='servicioscf.afip.gob.ar/fiscalizacion/reli/app/contrato/DatosLoc*' /&gt;&lt;ctrl name='Confirmar reenvío del formulario' role='dialog' /&gt;&lt;ctrl name='Continuar' role='push button' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:Click.Target>
+    </ui:Click>
+    <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists 'H4'" sap:VirtualizedContainerService.HintSize="563,116" sap2010:WorkflowViewState.IdRef="UiElementExists_5">
+      <ui:UiElementExists.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="202e6d4b-7642-4c20-b639-6098fa7f9479" InformativeScreenshot="c2fb79a1f8cd882ab0811822a6eaf82a" Selector="&lt;html app='chrome.exe' title='servicioscf.afip.gob.ar/fiscalizacion/reli/app/contrato/*' /&gt;&lt;webctrl parentid='dvmensajeSessionVencida' tag='H4' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:UiElementExists.Target>
+    </ui:UiElementExists>
+    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'BUTTON'" sap:VirtualizedContainerService.HintSize="563,116" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:Click.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:Click.CursorPosition>
+      <ui:Click.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="664e4232-0154-41aa-9516-0aecc698b200" InformativeScreenshot="bd81ba338af00e7cbbf8c01a7bd0b5bd" Selector="&lt;html app='chrome.exe' title='servicioscf.afip.gob.ar/fiscalizacion/reli/app/contrato/DatosLocador.aspx' /&gt;&lt;webctrl parentid='dvmensajeSessionVencida' tag='BUTTON' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:Click.Target>
+    </ui:Click>
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dtReporteActualizado]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="563,97" sap2010:WorkflowViewState.IdRef="ReadRange_6" SheetName="ListadoOfertas" WorkbookPath="C:\Users\Wirsadroid\Desktop\07.2024 Listado de ofertas.xlsx" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ArmarReporteUsuarios.xaml " sap:VirtualizedContainerService.HintSize="563,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="02-Framework\InternalProcesses\ArmarReporteUsuarios.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_resumenActualHtml">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="resumenActualHtml" />
+        </OutArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtReportActualizado">
+          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtReporteActualizado" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_contratosCargados">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="contratosCargados" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
     <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="563,199" sap2010:WorkflowViewState.IdRef="Sequence_28">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">

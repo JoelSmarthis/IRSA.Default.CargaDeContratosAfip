@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1326,4968</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1326,5124</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>RepresentarSociedad_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -81,7 +81,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="RepresentarSociedad" sap:VirtualizedContainerService.HintSize="1336,4903" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="RepresentarSociedad" sap:VirtualizedContainerService.HintSize="1336,5059" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="delayBefore" />
     </Sequence.Variables>
@@ -99,16 +99,17 @@
         <InArgument x:TypeArguments="x:Int32">700</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser - Seleccionar a representar" sap:VirtualizedContainerService.HintSize="1294,4550" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="e1d4ef5dd30c15205404ee964fffdde4" Selector="&lt;html app='chrome.exe' title='servicioscf.afip.gob.ar/fiscalizacion/reli/app/SelectUsuario.aspx' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser - Seleccionar a representar" sap:VirtualizedContainerService.HintSize="1294,4706" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="e1d4ef5dd30c15205404ee964fffdde4" Selector="&lt;html app='chrome.exe' title='servicioscf.afip.gob.ar/fiscalizacion/reli/app/SelectUsuario.aspx' /&gt;" TimeoutMS="10000">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Representar a" sap:VirtualizedContainerService.HintSize="1260,4394" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Representar a" sap:VirtualizedContainerService.HintSize="1260,5188" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Default="False" Name="declaracionContratosExists" />
               <Variable x:TypeArguments="x:Boolean" Name="sociedadAnteriorExists" />
+              <Variable x:TypeArguments="x:Boolean" Name="cargandoSelectorExists" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -124,7 +125,7 @@
                 </ui:Target>
               </ui:UiElementExists.Target>
             </ui:UiElementExists>
-            <If Condition="[in_cuitRepresentarAnterior=in_cuitRepresentar and sociedadAnteriorExists]" DisplayName="If -  cuit a representar es el mismo que el cuit anterior procesado" sap:VirtualizedContainerService.HintSize="1218,1335" sap2010:WorkflowViewState.IdRef="If_3">
+            <If Condition="[in_cuitRepresentarAnterior=in_cuitRepresentar and sociedadAnteriorExists]" DisplayName="If -  cuit a representar es el mismo que el cuit anterior procesado" sap:VirtualizedContainerService.HintSize="1218,1336" sap2010:WorkflowViewState.IdRef="If_3">
               <If.Then>
                 <Sequence DisplayName="Es cuit anterior" sap:VirtualizedContainerService.HintSize="376,218" sap2010:WorkflowViewState.IdRef="Sequence_17">
                   <sap:WorkflowViewStateService.ViewState>
@@ -204,7 +205,7 @@
                       <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,489" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
@@ -230,7 +231,7 @@
                                 </ui:Target>
                               </ui:SendHotkey.Target>
                             </ui:SendHotkey>
-                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Cuit sociedad correspondiente" sap:VirtualizedContainerService.HintSize="334,116" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayMS="0" DisplayName="Click - Cuit sociedad correspondiente" sap:VirtualizedContainerService.HintSize="334,116" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
                               <ui:Click.CursorPosition>
                                 <ui:CursorPosition Position="Center">
                                   <ui:CursorPosition.OffsetX>
@@ -258,6 +259,66 @@
                     </TryCatch.Catches>
                   </TryCatch>
                   <ui:LogMessage DisplayName="Log Message - se ingreso cuit representar" sap:VirtualizedContainerService.HintSize="438,101" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Se ingresó al cuit a representar. Se intentará entrar a declaración de contratos.&quot;]" />
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:UiElementExists DisplayName="Element Exists DIV - cargando" Exists="[cargandoSelectorExists]" sap:VirtualizedContainerService.HintSize="1218,116" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+              <ui:UiElementExists.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1e941ae6-aa28-4104-bda9-732eeedea304" InformativeScreenshot="aaa24ce4fe64666e0fb90ff1402c395a" Selector="&lt;html app='chrome.exe' title='servicioscf.afip.gob.ar/fiscalizacion/reli/app/Menucontribuyente.aspx' /&gt;&lt;webctrl css-selector='body&amp;gt;div' parentid='simple' tag='DIV' class='blockUI undefined blockPage' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:UiElementExists.Target>
+            </ui:UiElementExists>
+            <If Condition="[not cargandoSelectorExists]" DisplayName="If  no existe el selector de cargando" sap:VirtualizedContainerService.HintSize="1218,597" sap2010:WorkflowViewState.IdRef="If_5">
+              <If.Then>
+                <Sequence DisplayName="Recargar pagina" sap:VirtualizedContainerService.HintSize="376,400" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey - f5" sap:VirtualizedContainerService.HintSize="334,142" sap2010:WorkflowViewState.IdRef="SendHotkey_3" Key="f5" KeyModifiers="None" SpecialKey="True">
+                    <ui:SendHotkey.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="52012766-67b9-48aa-a482-a27ad920c370" TimeoutMS="1000">
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:SendHotkey.Target>
+                  </ui:SendHotkey>
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="Click push button  Continuar" sap:VirtualizedContainerService.HintSize="334,116" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d8aeca64-d30a-41c0-9dc1-20a345c1f4f2" InformativeScreenshot="e11bda69d49e11670e91da08b4c56066" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='servicioscf.afip.gob.ar/fiscalizacion/reli/app/contrato/DatosLoc*' /&gt;&lt;ctrl name='Confirmar reenvío del formulario' role='dialog' /&gt;&lt;ctrl name='Continuar' role='push button' /&gt;" TimeoutMS="1000">
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:Click.Target>
+                  </ui:Click>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_22">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
                 </Sequence>
               </If.Else>
             </If>
